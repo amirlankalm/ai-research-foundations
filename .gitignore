@@ -47,3 +47,11 @@ runs/
 
 # macOS metadata
 .DS_Store
+
+# Pytest & Coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Local run artifacts
+config_example.json
