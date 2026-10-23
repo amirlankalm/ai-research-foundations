@@ -41,4 +41,4 @@ jobs:
         python 04_Intuitive_Calculus_and_Optimization/optimization_demo.py
         python 05_Intuitive_Probability_and_Information_Theory/probability_info_demo.py
         python 07_Neural_Networks_and_Autograd_From_Scratch/micrograd_engine.py
-        python 20_Capstone_GRPO_Loss_Walkthrough/reproduce_deepseek_grpo.py
+        python 20_Capstone_GRPO_Loss_Walkthrough/grpo_loss_walkthrough.py
