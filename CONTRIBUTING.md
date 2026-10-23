@@ -29,9 +29,10 @@ We welcome contributions of all kinds: fixing typos, improving visual diagrams, 
    # or
    git checkout -b feat/module-12-kv-cache-diagram
    ```
-4. **Test your code**: Ensure all companion scripts execute cleanly without errors:
+4. **Test your code**: Ensure the pytest test suite and companion scripts execute cleanly without errors:
    ```bash
-   python3 20_Capstone_Paper_Reproduction_DeepSeekMath_GRPO/reproduce_deepseek_grpo.py
+   python3 -m pytest tests/ -v
+   python3 20_Capstone_GRPO_Loss_Walkthrough/reproduce_deepseek_grpo.py
    ```
 5. **Commit your changes** with descriptive commit messages following the Conventional Commits specification:
    - `docs: fix typo in Module 03 dot product section`

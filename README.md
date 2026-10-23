@@ -5,39 +5,27 @@
 </p>
 
 <p align="center">
-  <strong>The definitive visual, intuition-first curriculum taking you from standard Python to building GPTs and reproducing frontier AI reasoning papers.</strong>
+  <strong>A visual, intuition-first curriculum taking you from Python foundations to building GPTs and walking through frontier AI reasoning paper implementations.</strong>
 </p>
 
 <p align="center">
-  <em>Created with ❤️ by Amirlan Kalmukhan</em>
+  <em>Created by Amirlan Kalmukhan</em>
 </p>
 
 <p align="center">
-  <a href="https://github.com/amirlankalm/ai-research-foundations/stargazers"><img src="https://img.shields.io/github/stars/amirlankalm/ai-research-foundations?style=for-the-badge&logo=github&color=FFD700" alt="Stars"></a>
-  <a href="https://github.com/amirlankalm/ai-research-foundations/network/members"><img src="https://img.shields.io/github/forks/amirlankalm/ai-research-foundations?style=for-the-badge&logo=github&color=3182CE" alt="Forks"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge" alt="License"></a>
   <a href="#-curriculum-overview"><img src="https://img.shields.io/badge/Modules-20%20Step--by--Step-purple.svg?style=for-the-badge" alt="20 Modules"></a>
+  <a href="GLOSSARY.md"><img src="https://img.shields.io/badge/Glossary-Alphabetical-blue.svg?style=for-the-badge" alt="Glossary"></a>
+  <a href="STUCK.md"><img src="https://img.shields.io/badge/Troubleshooting-STUCK.md-red.svg?style=for-the-badge" alt="Troubleshooting"></a>
   <a href="https://arxiv.org/abs/2402.03300"><img src="https://img.shields.io/badge/Capstone-DeepSeekMath%20GRPO-orange.svg?style=for-the-badge" alt="DeepSeek GRPO"></a>
 </p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/Python-3.10%2B-blue?logo=python&logoColor=white" alt="Python 3.10+">
   <img src="https://img.shields.io/badge/PyTorch-2.2%2B-EE4C2C?logo=pytorch&logoColor=white" alt="PyTorch 2.2+">
+  <img src="https://img.shields.io/badge/Tests-19%20Passing-brightgreen?logo=pytest&logoColor=white" alt="Tests 19 Passing">
   <img src="https://img.shields.io/badge/PRs-Welcome-brightgreen" alt="PRs Welcome">
-  <img src="https://img.shields.io/badge/Maintenance-Active-success" alt="Maintenance Active">
 </p>
-
----
-
-> [!TIP]
-> ### ⭐ Support This Open-Source Project!
-> If this curriculum helps your understanding or serves as a valuable reference for your research, **please give it a Star on GitHub!** It boosts the project's visibility, helping aspiring researchers and students discover it.
-> 
-> <p align="left">
->   <a href="https://twitter.com/intent/tweet?text=Check%20out%20AI%20Research%20Foundations%3A%20A%20free%2C%20visual%2C%20intuition-first%20guide%20to%20deep%20learning%2C%20transformers%2C%20and%20reproducing%20DeepSeekMath%20GRPO%21%20https%3A%2F%2Fgithub.com%2Famirlankalm%2Fai-research-foundations"><img src="https://img.shields.io/badge/Share_on-X_(Twitter)-black?logo=x&logoColor=white" alt="Share on X"></a>
->   <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://github.com/amirlankalm/ai-research-foundations"><img src="https://img.shields.io/badge/Share_on-LinkedIn-0A66C2?logo=linkedin&logoColor=white" alt="Share on LinkedIn"></a>
->   <a href="https://reddit.com/submit?url=https://github.com/amirlankalm/ai-research-foundations&title=AI%20Research%20Foundations%3A%20From%20Zero%20to%20Junior%20AI%20Researcher"><img src="https://img.shields.io/badge/Share_on-Reddit-FF4500?logo=reddit&logoColor=white" alt="Share on Reddit"></a>
-> </p>
 
 ---
 
@@ -50,10 +38,10 @@ Inspired by the structured, hands-on, community-driven spirit of **[30 Days of P
 ### ✨ Core Principles of this Guidebook
 
 1. **💡 Intuition First, Zero Math Panic**: Every mathematical equation is grounded in visual spatial intuition and plain-English analogies before any formal symbols are introduced.
-2. **📖 Every Jargon Term Defined**: Whenever a technical term appears *(like latent vector, autograd, or KL divergence)*, a clear, plain-English definition is provided right next to it.
+2. **📖 Every Jargon Term Defined**: Whenever a technical term appears *(like latent vector, autograd, or KL divergence)*, a clear, plain-English definition is provided right next to it. You can also search the centralized [`GLOSSARY.md`](GLOSSARY.md).
 3. **🛠️ Build From Scratch Before Using Libraries**: You will hand-code a scalar autograd engine (micrograd style), build a byte-pair tokenizer, construct self-attention, and assemble a GPT decoder from raw tensor operations before touching pre-built library abstractions.
 4. **🧠 Frontier Post-Training & Reasoning**: Unlike outdated courses that stop at 2017 transformers, this curriculum carries you directly through **Direct Preference Optimization (DPO)**, **Group Relative Policy Optimization (GRPO)**, and **Reasoning Models (DeepSeek-R1, test-time compute)**.
-5. **🎯 Real Paper Reproduction Capstone**: In the final module, you will implement the algorithmic core of the breakthrough paper **[DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models (arXiv:2402.03300)](https://arxiv.org/abs/2402.03300)** from scratch in PyTorch. You'll also learn how to use platforms like [Paperleet](https://paperleet.com) *(a LeetCode-style tool for AI researchers)* to explore and track paper reproductions.
+5. **🎯 Real Paper Walkthrough Capstone**: In the final module, you will implement the algorithmic core and loss function of the breakthrough paper **[DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models (arXiv:2402.03300)](https://arxiv.org/abs/2402.03300)** from scratch in PyTorch. You'll also learn how to explore paper reproductions on tools like [Paperleet](https://paperleet.com) *(an optional LeetCode-style practice platform for AI researchers)*.
 
 ---
 
@@ -82,7 +70,7 @@ Follow the modules sequentially. Each folder contains a detailed, beautifully il
 | **17** | **Reasoning Models & Test-Time Compute** | Chain-of-Thought, Process Reward Models (PRMs), Search & MCTS, DeepSeek-R1 emergent reasoning | Stage 7: Reasoning | [Module 17](17_Reasoning_Models_and_Test_Time_Compute/README.md) |
 | **18** | **Mechanistic Interpretability & AI Safety** | Reverse-engineering weights, induction heads, superposition, Sparse Autoencoders (SAEs), red-teaming | Stage 8: Safety & Interp | [Module 18](18_Mechanistic_Interpretability_and_AI_Safety/README.md) |
 | **19** | **How to Read & Critique AI Research Papers** | S. Keshav 3-pass method, anatomy of an ML paper, spotting benchmark hype, Paperleet workflow | Stage 9: Paper Reading | [Module 19](19_Reading_and_Deconstructing_AI_Papers/README.md) |
-| **20** | **Capstone Project: DeepSeekMath & GRPO** | Full reproduction of Group Relative Policy Optimization (arXiv:2402.03300) in PyTorch on GSM8K math reasoning | Final Capstone | [Module 20](20_Capstone_Paper_Reproduction_DeepSeekMath_GRPO/README.md) |
+| **20** | **Capstone: GRPO Loss Walkthrough** | Complete PyTorch walkthrough of Group Relative Policy Optimization (DeepSeekMath arXiv:2402.03300) loss, group normalization, and rule-based math verification | Final Capstone | [Module 20](20_Capstone_GRPO_Loss_Walkthrough/README.md) |
 
 ---
 
@@ -99,13 +87,23 @@ cd ai-research-foundations
 python3 -m venv .venv
 source .venv/bin/activate    # On Windows: .venv\Scripts\activate
 
-# 3. Upgrade pip and install all dependencies
+# 3. Upgrade pip
 pip install --upgrade pip
-pip install -r requirements.txt
 
-# 4. Verify your installation
-python3 -c "import torch; print('PyTorch Version:', torch.__version__); print('Device Available:', 'CUDA' if torch.cuda.is_available() else ('MPS (Apple Silicon)' if torch.backends.mps.is_available() else 'CPU'))"
+# Choose your track:
+# Option A: Core math & classical ML only (lightweight, no PyTorch needed):
+pip install -r requirements-core.txt
+
+# Option B: Full deep learning & LLM stack:
+pip install -r requirements-torch.txt
+
+# 4. Verify your installation by running the test suite
+python3 -m pytest tests/ -v
 ```
+
+> [!TIP]
+> - Search terms at any time in [`GLOSSARY.md`](GLOSSARY.md).
+> - Encountered an error? Consult [`STUCK.md`](STUCK.md) for solutions to the 15 most common beginner pitfalls.
 
 ---
 
@@ -134,23 +132,17 @@ flowchart LR
 
 ---
 
-## 🏆 The Final Capstone: DeepSeekMath GRPO Reproduction
+## 🏆 Capstone Walkthrough: DeepSeekMath GRPO Loss
 
-In [Module 20](20_Capstone_Paper_Reproduction_DeepSeekMath_GRPO/README.md), you will integrate everything you have learned by reproducing the core algorithmic innovation of modern reasoning AI: **Group Relative Policy Optimization (GRPO)** from [DeepSeekMath (arXiv:2402.03300)](https://arxiv.org/abs/2402.03300).
+In [Module 20](20_Capstone_GRPO_Loss_Walkthrough/README.md), you will integrate what you have learned by implementing and executing the core mathematical and loss mechanics of modern reasoning AI: **Group Relative Policy Optimization (GRPO)** from [DeepSeekMath (arXiv:2402.03300)](https://arxiv.org/abs/2402.03300).
 
 You will:
-1. Deconstruct the DeepSeekMath paper mechanics (and see how to track reproduction challenges on tools like [Paperleet](https://paperleet.com) — like LeetCode for AI researchers).
-2. Build a rule-based math verifier for GSM8K problems.
+1. Deconstruct the DeepSeekMath paper mechanics (and see how to explore optional reproduction challenges on community tools like [Paperleet](https://paperleet.com) — like LeetCode for AI researchers).
+2. Build a rule-based math verifier for GSM8K problems with `<think>` tag checking.
 3. Implement the GRPO group reward normalizer:
    $$\hat{A}_{i,t} = \frac{r_i - \text{mean}(\{r_1, \dots, r_G\})}{\text{std}(\{r_1, \dots, r_G\}) + \epsilon}$$
-4. Implement the clipped surrogate objective with reference-model KL penalty.
-5. Train a model to solve math problems through pure policy optimization without a critic!
-
----
-
-## 🌟 Star History
-
-[![Star History Chart](https://api.star-history.com/svg?repos=amirlankalm/ai-research-foundations&type=Date)](https://star-history.com/#amirlankalm/ai-research-foundations&Date)
+4. Implement the clipped surrogate objective with analytical KL divergence penalty ($k_3$ estimator).
+5. Execute a standalone PyTorch loss walkthrough that runs cleanly on CPU in seconds.
 
 ---
 
@@ -192,10 +184,13 @@ Please read our [Contributing Guide](CONTRIBUTING.md) and [Code of Conduct](CODE
 
 ---
 
-## 🏷️ Search Topics & Index Keywords
+## 📜 License & Assets Notice
 
-`artificial-intelligence` • `deep-learning` • `machine-learning` • `reinforcement-learning` • `pytorch` • `transformers` • `llm` • `large-language-models` • `deepseek` • `deepseek-r1` • `grpo` • `rlhf` • `dpo` • `paper-reproduction` • `ai-research` • `python` • `neural-networks` • `reasoning-models` • `interpretability` • `paperleet`
+- **Curriculum & Code**: Released under the [MIT License](LICENSE).
+- **Artistic Visuals**: The banner artwork depicts characters from *Cyberpunk: Edgerunners* (Studio Trigger / CD Projekt Red) and is included solely for educational and non-commercial community inspiration under fair use principles. See [`ASSETS_NOTICE.md`](ASSETS_NOTICE.md) for full terms.
 
 ---
 
-*Art credit: D and Capri, Cyberpunk: Edgerunners 2 (Studio Trigger / CD Projekt Red). Rights belong to their respective owners.*
+## 🏷️ Search Topics & Index Keywords
+
+`artificial-intelligence` • `deep-learning` • `machine-learning` • `reinforcement-learning` • `pytorch` • `transformers` • `llm` • `large-language-models` • `deepseek` • `deepseek-r1` • `grpo` • `rlhf` • `dpo` • `paper-reproduction` • `ai-research` • `python` • `neural-networks` • `reasoning-models` • `interpretability` • `paperleet`
