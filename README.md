@@ -5,20 +5,39 @@
 </p>
 
 <p align="center">
-  <strong>A comprehensive, visual, intuition-first curriculum to take you from basic programming to reproducing cutting-edge modern AI research papers.</strong>
+  <strong>The definitive visual, intuition-first curriculum taking you from standard Python to building GPTs and reproducing frontier AI reasoning papers.</strong>
 </p>
 
 <p align="center">
-  <em>Created by Amirlan Kalmukhan</em>
+  <em>Created with ❤️ by Amirlan Kalmukhan</em>
 </p>
 
 <p align="center">
-  <a href="#-curriculum-overview"><img src="https://img.shields.io/badge/Modules-20%20Step--by--Step-blue.svg" alt="Modules"></a>
-  <a href="#-capstone-project-deepseekmath-grpo"><img src="https://img.shields.io/badge/Capstone-DeepSeekMath%20GRPO-orange.svg" alt="Capstone"></a>
-  <a href="https://paperleet.com"><img src="https://img.shields.io/badge/Community-Paperleet-green.svg" alt="Paperleet"></a>
-  <a href="#-prerequisites"><img src="https://img.shields.io/badge/Prerequisites-Basic%20Python-yellow.svg" alt="Prerequisites"></a>
-  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-purple.svg" alt="License"></a>
+  <a href="https://github.com/amirlankalm/ai-research-foundations/stargazers"><img src="https://img.shields.io/github/stars/amirlankalm/ai-research-foundations?style=for-the-badge&logo=github&color=FFD700" alt="Stars"></a>
+  <a href="https://github.com/amirlankalm/ai-research-foundations/network/members"><img src="https://img.shields.io/github/forks/amirlankalm/ai-research-foundations?style=for-the-badge&logo=github&color=3182CE" alt="Forks"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge" alt="License"></a>
+  <a href="https://paperleet.com"><img src="https://img.shields.io/badge/Community-Paperleet-purple.svg?style=for-the-badge" alt="Paperleet"></a>
+  <a href="https://arxiv.org/abs/2402.03300"><img src="https://img.shields.io/badge/Capstone-DeepSeekMath%20GRPO-orange.svg?style=for-the-badge" alt="DeepSeek GRPO"></a>
 </p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3.10%2B-blue?logo=python&logoColor=white" alt="Python 3.10+">
+  <img src="https://img.shields.io/badge/PyTorch-2.2%2B-EE4C2C?logo=pytorch&logoColor=white" alt="PyTorch 2.2+">
+  <img src="https://img.shields.io/badge/PRs-Welcome-brightgreen" alt="PRs Welcome">
+  <img src="https://img.shields.io/badge/Maintenance-Active-success" alt="Maintenance Active">
+</p>
+
+---
+
+> [!TIP]
+> ### ⭐ Support This Open-Source Project!
+> If this curriculum helps your understanding or serves as a valuable reference for your research, **please give it a Star on GitHub!** It boosts the project's visibility, helping aspiring researchers and students discover it.
+> 
+> <p align="left">
+>   <a href="https://twitter.com/intent/tweet?text=Check%20out%20AI%20Research%20Foundations%3A%20A%20free%2C%20visual%2C%20intuition-first%20guide%20to%20deep%20learning%2C%20transformers%2C%20and%20reproducing%20DeepSeekMath%20GRPO%21%20https%3A%2F%2Fgithub.com%2Famirlankalm%2Fai-research-foundations"><img src="https://img.shields.io/badge/Share_on-X_(Twitter)-black?logo=x&logoColor=white" alt="Share on X"></a>
+>   <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://github.com/amirlankalm/ai-research-foundations"><img src="https://img.shields.io/badge/Share_on-LinkedIn-0A66C2?logo=linkedin&logoColor=white" alt="Share on LinkedIn"></a>
+>   <a href="https://reddit.com/submit?url=https://github.com/amirlankalm/ai-research-foundations&title=AI%20Research%20Foundations%3A%20From%20Zero%20to%20Junior%20AI%20Researcher"><img src="https://img.shields.io/badge/Share_on-Reddit-FF4500?logo=reddit&logoColor=white" alt="Share on Reddit"></a>
+> </p>
 
 ---
 
@@ -73,25 +92,18 @@ To get started, prepare your local development environment. We recommend **Pytho
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/your-username/ai-research-foundations.git
+git clone https://github.com/amirlankalm/ai-research-foundations.git
 cd ai-research-foundations
 
 # 2. Create a clean virtual environment
 python3 -m venv .venv
 source .venv/bin/activate    # On Windows: .venv\Scripts\activate
 
-# 3. Upgrade pip and install core foundations
+# 3. Upgrade pip and install all dependencies
 pip install --upgrade pip
-pip install numpy pandas matplotlib scipy scikit-learn jupyterlab
+pip install -r requirements.txt
 
-# 4. Install PyTorch (Choose based on your hardware)
-# For macOS (Apple Silicon M1/M2/M3/M4):
-pip install torch torchvision torchaudio
-
-# For Linux/Windows with NVIDIA GPU (CUDA 12.1):
-# pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
-
-# 5. Verify your installation
+# 4. Verify your installation
 python3 -c "import torch; print('PyTorch Version:', torch.__version__); print('Device Available:', 'CUDA' if torch.cuda.is_available() else ('MPS (Apple Silicon)' if torch.backends.mps.is_available() else 'CPU'))"
 ```
 
@@ -111,14 +123,14 @@ flowchart LR
 
 1. **Step 1: Read the Theory & Mental Models**
    - Read the concept explanations and note the definitions in parenthesis.
-   - Look closely at the Mermaid diagrams and ASCII schematics.
+   - Look closely at the visual diagrams and architecture schematics.
 2. **Step 2: Run the Companion Code**
    - Don't just copy-paste: type out the code snippets or execute the provided scripts.
    - Add `print()` statements to inspect tensor shapes (`tensor.shape`) at every intermediate step.
 3. **Step 3: Solve the Revision Exercises**
    - **Level 1 (Recall & Concept Checks)**: Quick knowledge verification.
    - **Level 2 (Implementation Challenges)**: Code tasks to cement the algorithms.
-   - **Level 3 (Research & Critical Thinking)**: Deep exploration, mathematical proofs, and ablation studies.
+   - **Level 3 (Research Deep Dive)**: Deep exploration, mathematical proofs, and ablation studies.
 
 ---
 
@@ -133,6 +145,12 @@ You will:
    $$\hat{A}_{i,t} = \frac{r_i - \text{mean}(\{r_1, \dots, r_G\})}{\text{std}(\{r_1, \dots, r_G\}) + \epsilon}$$
 4. Implement the clipped surrogate objective with reference-model KL penalty.
 5. Train a model to solve math problems through pure policy optimization without a critic!
+
+---
+
+## 🌟 Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=amirlankalm/ai-research-foundations&type=Date)](https://star-history.com/#amirlankalm/ai-research-foundations&Date)
 
 ---
 
@@ -170,9 +188,13 @@ This curriculum synthesizes the finest open educational resources in computer sc
 ## 🤝 Community & Contributing
 
 Found a typo? Have an idea for a cleaner diagram or a better intuition analogy? Contributions are welcome!
-Feel free to open an Issue or submit a Pull Request.
+Please read our [Contributing Guide](CONTRIBUTING.md) and [Code of Conduct](CODE_OF_CONDUCT.md) before submitting a Pull Request.
 
-If this repository helps you on your AI research journey, please give it a **⭐ Star** and share it with peers!
+---
+
+## 🏷️ Search Topics & Index Keywords
+
+`artificial-intelligence` • `deep-learning` • `machine-learning` • `reinforcement-learning` • `pytorch` • `transformers` • `llm` • `large-language-models` • `deepseek` • `deepseek-r1` • `grpo` • `rlhf` • `dpo` • `paper-reproduction` • `ai-research` • `python` • `neural-networks` • `reasoning-models` • `interpretability` • `paperleet`
 
 ---
 
