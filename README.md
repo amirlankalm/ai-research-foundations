@@ -1,11 +1,11 @@
-# 🧠 AI Research Foundations: From Zero to Junior AI Researcher
+# 🧠 AI Research Foundations: From Python to Frontier Reasoning Models
 
 <p align="center">
   <img src="assets/banner.png" alt="AI Research Foundations Banner" width="100%">
 </p>
 
 <p align="center">
-  <strong>A visual, intuition-first curriculum taking you from Python foundations to building GPTs and walking through frontier AI reasoning paper implementations.</strong>
+  <strong>A visual, intuition-first curriculum taking you from basic Python foundations to building GPTs and walking through DeepSeekMath GRPO loss.</strong>
 </p>
 
 <p align="center">
@@ -17,13 +17,13 @@
   <a href="#-curriculum-overview"><img src="https://img.shields.io/badge/Modules-20%20Step--by--Step-purple.svg?style=for-the-badge" alt="20 Modules"></a>
   <a href="GLOSSARY.md"><img src="https://img.shields.io/badge/Glossary-Alphabetical-blue.svg?style=for-the-badge" alt="Glossary"></a>
   <a href="STUCK.md"><img src="https://img.shields.io/badge/Troubleshooting-STUCK.md-red.svg?style=for-the-badge" alt="Troubleshooting"></a>
-  <a href="https://arxiv.org/abs/2402.03300"><img src="https://img.shields.io/badge/Capstone-DeepSeekMath%20GRPO-orange.svg?style=for-the-badge" alt="DeepSeek GRPO"></a>
+  <a href="20_Capstone_GRPO_Loss_Walkthrough/README.md"><img src="https://img.shields.io/badge/Capstone-GRPO%20Loss%20Walkthrough-orange.svg?style=for-the-badge" alt="GRPO Walkthrough"></a>
 </p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/Python-3.10%2B-blue?logo=python&logoColor=white" alt="Python 3.10+">
   <img src="https://img.shields.io/badge/PyTorch-2.2%2B-EE4C2C?logo=pytorch&logoColor=white" alt="PyTorch 2.2+">
-  <img src="https://img.shields.io/badge/Tests-19%20Passing-brightgreen?logo=pytest&logoColor=white" alt="Tests 19 Passing">
+  <a href="https://github.com/amirlankalm/ai-research-foundations/actions/workflows/ci.yml"><img src="https://github.com/amirlankalm/ai-research-foundations/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
   <img src="https://img.shields.io/badge/PRs-Welcome-brightgreen" alt="PRs Welcome">
 </p>
 
@@ -31,9 +31,12 @@
 
 ## 📖 Welcome to AI Research Foundations
 
+> [!NOTE]
+> **Prerequisites**: This curriculum is designed to be started **after** completing basic Python foundations (variables, functions, lists/dictionaries, control flow — such as [30 Days of Python](https://github.com/Asabeneh/30-Days-Of-Python) or [Harvard CS50P](https://cs50.harvard.edu/python/)). No prior machine learning, advanced calculus, or PyTorch background is required — everything from vector broadcasting to transformer decoders and RLHF is taught from intuition up.
+
 Most resources for learning AI either drown you in dry academic equations without explaining **why** things work, or hand you high-level black-box libraries (`model.fit()`) without showing you the internal machinery.
 
-Inspired by the structured, hands-on, community-driven spirit of **[30 Days of Python](https://github.com/Asabeneh/30-Days-Of-Python)**, this repository provides a complete, progressive path designed for anyone who wants to become a capable **AI Researcher** or **AI Research Engineer**.
+Inspired by the structured, hands-on, community-driven spirit of **[30 Days of Python](https://github.com/Asabeneh/30-Days-Of-Python)**, this repository provides a complete, progressive path designed for anyone who wants to understand and build modern foundation models.
 
 ### ✨ Core Principles of this Guidebook
 
@@ -41,7 +44,7 @@ Inspired by the structured, hands-on, community-driven spirit of **[30 Days of P
 2. **📖 Every Jargon Term Defined**: Whenever a technical term appears *(like latent vector, autograd, or KL divergence)*, a clear, plain-English definition is provided right next to it. You can also search the centralized [`GLOSSARY.md`](GLOSSARY.md).
 3. **🛠️ Build From Scratch Before Using Libraries**: You will hand-code a scalar autograd engine (micrograd style), build a byte-pair tokenizer, construct self-attention, and assemble a GPT decoder from raw tensor operations before touching pre-built library abstractions.
 4. **🧠 Frontier Post-Training & Reasoning**: Unlike outdated courses that stop at 2017 transformers, this curriculum carries you directly through **Direct Preference Optimization (DPO)**, **Group Relative Policy Optimization (GRPO)**, and **Reasoning Models (DeepSeek-R1, test-time compute)**.
-5. **🎯 Real Paper Walkthrough Capstone**: In the final module, you will implement the algorithmic core and loss function of the breakthrough paper **[DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models (arXiv:2402.03300)](https://arxiv.org/abs/2402.03300)** from scratch in PyTorch. You'll also learn how to explore paper reproductions on tools like [Paperleet](https://paperleet.com) *(an optional LeetCode-style practice platform for AI researchers)*.
+5. **🎯 Real Paper Walkthrough Capstone**: In the final module, you will implement the algorithmic core and loss function of the breakthrough paper **[DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models (arXiv:2402.03300)](https://arxiv.org/abs/2402.03300)** from scratch in PyTorch.
 
 ---
 
@@ -98,6 +101,10 @@ pip install -r requirements-core.txt
 pip install -r requirements-torch.txt
 
 # 4. Verify your installation by running the test suite
+# If you chose Option A (Core track, 12 passing tests without PyTorch):
+python3 -m pytest tests/test_core.py -v
+
+# If you chose Option B (Full Deep Learning track, 20 passing tests):
 python3 -m pytest tests/ -v
 ```
 
@@ -137,7 +144,7 @@ flowchart LR
 In [Module 20](20_Capstone_GRPO_Loss_Walkthrough/README.md), you will integrate what you have learned by implementing and executing the core mathematical and loss mechanics of modern reasoning AI: **Group Relative Policy Optimization (GRPO)** from [DeepSeekMath (arXiv:2402.03300)](https://arxiv.org/abs/2402.03300).
 
 You will:
-1. Deconstruct the DeepSeekMath paper mechanics (and see how to explore optional reproduction challenges on community tools like [Paperleet](https://paperleet.com) — like LeetCode for AI researchers).
+1. Deconstruct the DeepSeekMath paper mechanics (arXiv:2402.03300).
 2. Build a rule-based math verifier for GSM8K problems with `<think>` tag checking.
 3. Implement the GRPO group reward normalizer:
    $$\hat{A}_{i,t} = \frac{r_i - \text{mean}(\{r_1, \dots, r_G\})}{\text{std}(\{r_1, \dots, r_G\}) + \epsilon}$$

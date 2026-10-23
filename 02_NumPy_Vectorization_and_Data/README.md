@@ -4,6 +4,18 @@
   <img src="../assets/02_tensor_broadcasting.png" alt="02_NumPy_Vectorization_and_Data Diagram" width="85%">
 </p>
 
+<p align="center">
+  <a href="https://colab.research.google.com/github/amirlankalm/ai-research-foundations/blob/main/02_NumPy_Vectorization_and_Data/module_02.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a>
+</p>
+
+> [!NOTE]
+> ⏱️ **Estimated Study Time**: ~2.5 hours reading + ~2 hours exercises  
+> 🎯 **What "Done" Looks Like**:
+> - [ ] You can explain contiguous memory strides and why vectorized NumPy avoids Python interpreter loop overhead.
+> - [ ] You can predict resulting broadcast shapes for arbitrary array dimensions.
+> - [ ] You ran `python3 -m pytest tests/test_core.py -v` and verified that Module 02 tests pass.
+> - [ ] You attempted Level 1 & Level 2 exercises and verified them against [`solutions.md`](solutions.md).
+
 
 Welcome to Module 02 of **AI Research Foundations**. In this module, we transition from standard Python to high-performance vectorized numerical computation using **NumPy**, along with data manipulation via **Pandas** and visualization with **Matplotlib**.
 
@@ -199,6 +211,9 @@ print("Saved loss curve plot to loss_curve.png")
 ---
 
 ## 🏋️ Revision Exercises
+
+> [!TIP]
+> **Worked Solutions**: Once you've attempted these exercises, check your implementations and answers in [`solutions.md`](solutions.md).
 
 ### Level 1: Recall & Conceptual
 1. Define the following terms in your own words:

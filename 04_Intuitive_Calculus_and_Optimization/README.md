@@ -4,6 +4,14 @@
   <img src="../assets/04_optimization_landscapes.png" alt="04_Intuitive_Calculus_and_Optimization Diagram" width="85%">
 </p>
 
+> [!NOTE]
+> ⏱️ **Estimated Study Time**: ~3 hours reading + ~2 hours exercises  
+> 🎯 **What "Done" Looks Like**:
+> - [ ] You can explain derivatives, gradients, and chain rule with intuitive geometric mental models.
+> - [ ] You understand why Adam's first and second moments solve ravine oscillations and vanishing gradients.
+> - [ ] You ran `python3 -m pytest tests/test_core.py -v` and verified that Module 04 tests pass.
+> - [ ] You attempted Level 1 & Level 2 exercises and verified them against [`solutions.md`](solutions.md).
+
 
 Welcome to Module 04 of **AI Research Foundations**. Deep learning models learn by adjusting millions or billions of parameters to minimize an objective function *(a mathematical formula quantifying how wrong the model's predictions are)*. In this module, we build an intuitive understanding of **derivatives, gradients, the chain rule, and modern optimizers**.
 
@@ -133,6 +141,9 @@ Setting a constant learning rate throughout training often leads to divergence o
 ---
 
 ## 🏋️ Revision Exercises
+
+> [!TIP]
+> **Worked Solutions**: Once you've attempted these exercises, check your implementations and answers in [`solutions.md`](solutions.md).
 
 ### Level 1: Recall & Conceptual
 1. In plain English, what is the geometric difference between a **derivative** and a **gradient**?

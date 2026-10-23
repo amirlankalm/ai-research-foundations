@@ -7,29 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## [Unreleased] - `quality-pass` branch
-
-### Added
-- Comprehensive repository audit report ([`AUDIT.md`](AUDIT.md)).
-- Complete alphabetical AI research index ([`GLOSSARY.md`](GLOSSARY.md)) covering every defined term with direct chapter links.
-- Beginner troubleshooting guide ([`STUCK.md`](STUCK.md)) diagnosing the top 15 PyTorch and numerical computation errors.
-- Copyright and licensing notice ([`ASSETS_NOTICE.md`](ASSETS_NOTICE.md)) clarifying third-party artwork exclusions for `assets/banner.png`.
-- Two-tier dependency specifications: [`requirements-core.txt`](requirements-core.txt) (NumPy-only modules) and [`requirements-torch.txt`](requirements-torch.txt) (Deep learning modules).
-- Automated test suites in [`tests/`](tests/) running Level 2 implementation exercises via `pytest`.
-- GitHub Actions CI workflow ([`.github/workflows/ci.yml`](.github/workflows/ci.yml)) testing CPU-safe scripts and tests.
-- Release checklist ([`RELEASE_CHECKLIST.md`](RELEASE_CHECKLIST.md)), issue drafts ([`ISSUE_DRAFTS.md`](ISSUE_DRAFTS.md)), and private launch notes draft ([`LAUNCH_NOTES.md`](LAUNCH_NOTES.md)).
-
-### Changed
-- Renamed Module 20 from *"Capstone Paper Reproduction"* to *"Capstone: GRPO Loss Walkthrough & Mathematical Foundations"* to accurately reflect simulated group loss mechanics vs. full 7B cluster pretraining.
-- Updated main `README.md` to remove unverified claims, replacing "definitive" with "visual, intuition-first path from Python to your first paper reproduction".
-- Replaced star-history graph and star-begging blocks with clean, neutral open-source support notes.
-- Calibrated Paperleet framing to highlight it as an optional LeetCode-style tool for AI researchers.
-
----
-
 ## [0.1.0] - 2026-10-23
 
 ### Added
-- Initial 20-module curriculum structure covering Python tooling, Linear Algebra, Calculus, Probability, Classical ML, Micrograd, PyTorch, Deep Learning dynamics, BPE tokenization, Transformers, nanoGPT, Reinforcement Learning, PPO, SFT/DPO, RLHF/GRPO, Reasoning models, Interpretability, and Paper analysis.
-- 20 high-resolution Matplotlib diagram schematics in `assets/`.
-- Runnable demo Python scripts across modules.
+- Modular test suite split into [`tests/test_core.py`](tests/test_core.py) (zero PyTorch dependencies for lightweight installations) and [`tests/test_torch.py`](tests/test_torch.py) (with `pytest.importorskip("torch")` and finite gradient backprop checks).
+- Worked solution guides ([`solutions.md`](01_Python_and_Research_Tooling/solutions.md)) for Level 1 and Level 2 exercises across Modules 01, 02, 03, 04, and 05.
+- Google Colab interactive notebook pilot for Modules 01, 02, and 03 with "Open in Colab" badges.
+- Fully worked tiny nanoGPT language modeling experiment in Module 12 with hand-rolled `CausalSelfAttention`, fixed random seed, theoretical baseline comparison, and empirical held-out validation metrics.
+- Time estimates and "What 'Done' Looks Like" completion checklists across modules.
+- Alphabetical AI research glossary ([`GLOSSARY.md`](GLOSSARY.md)) and beginner error diagnostic guide ([`STUCK.md`](STUCK.md)).
+- Tiered dependency management ([`requirements-core.txt`](requirements-core.txt) vs. [`requirements-torch.txt`](requirements-torch.txt)).
+- GitHub Actions CI workflow ([`.github/workflows/ci.yml`](.github/workflows/ci.yml)) testing matrix on Python 3.11 and 3.12.
+- Enabled GitHub Discussions and published 5 curated starter issues labeled `good first issue`.
+
+### Changed
+- Reframed curriculum positioning honestly: "From Python to Frontier Reasoning Models" with clear prerequisite note (designed after 30-Days-Of-Python or CS50P).
+- Renamed Capstone script to `grpo_loss_walkthrough.py` with honest walkthrough framing across docstrings, console outputs, and documentation.
+- Replaced hardcoded test badge with real live GitHub Actions CI status badge.
+- Reduced Paperleet mentions to a single balanced listing under Master Resources.

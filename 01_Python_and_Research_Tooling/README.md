@@ -4,6 +4,18 @@
   <img src="../assets/01_dev_ecosystem.png" alt="01_Python_and_Research_Tooling Diagram" width="85%">
 </p>
 
+<p align="center">
+  <a href="https://colab.research.google.com/github/amirlankalm/ai-research-foundations/blob/main/01_Python_and_Research_Tooling/module_01.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a>
+</p>
+
+> [!NOTE]
+> ⏱️ **Estimated Study Time**: ~2 hours reading + ~1-2 hours exercises  
+> 🎯 **What "Done" Looks Like**:
+> - [ ] You can explain why virtual environments and `.gitignore` are essential for reproducible ML.
+> - [ ] You understand how type hints and `@dataclass` prevent experiment configuration bugs.
+> - [ ] You ran `python3 -m pytest tests/test_core.py -v` and verified that Module 01 tests pass.
+> - [ ] You attempted the Level 1 & Level 2 exercises and checked your work against [`solutions.md`](solutions.md).
+
 
 Welcome to the first module of **AI Research Foundations**. In this chapter, we establish the essential programming and command-line habits required to conduct reproducible machine learning research.
 
@@ -208,6 +220,9 @@ def bad_layer_forward(x: torch.Tensor, w: torch.Tensor) -> torch.Tensor:
 ---
 
 ## 🏋️ Revision Exercises
+
+> [!TIP]
+> **Worked Solutions**: Once you've attempted these exercises, check your implementations and answers in [`solutions.md`](solutions.md).
 
 ### Level 1: Recall & Conceptual
 1. Explain the difference between `python -m venv .venv` and installing packages globally with `pip install`. Why is this crucial for reproducible research?

@@ -4,6 +4,18 @@
   <img src="../assets/03_linear_algebra_visuals.png" alt="03_Intuitive_Linear_Algebra Diagram" width="85%">
 </p>
 
+<p align="center">
+  <a href="https://colab.research.google.com/github/amirlankalm/ai-research-foundations/blob/main/03_Intuitive_Linear_Algebra/module_03.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a>
+</p>
+
+> [!NOTE]
+> ⏱️ **Estimated Study Time**: ~3 hours reading + ~2 hours exercises  
+> 🎯 **What "Done" Looks Like**:
+> - [ ] You can geometrically visualize dot products, projections, and matrix transformations.
+> - [ ] You understand why SVD decomposes matrices into orthogonal directions and singular values.
+> - [ ] You ran `python3 -m pytest tests/test_core.py -v` and verified that Module 03 tests pass.
+> - [ ] You attempted Level 1 & Level 2 exercises and verified them against [`solutions.md`](solutions.md).
+
 
 Welcome to Module 03 of **AI Research Foundations**. Linear algebra is the native language of artificial intelligence. In this module, we remove the cold, dry abstraction and build a vivid **spatial and geometric intuition** for every linear algebraic concept used in deep learning.
 
@@ -167,6 +179,9 @@ This cuts trainable parameters by **over 99%** while preserving accuracy!
 ---
 
 ## 🏋️ Revision Exercises
+
+> [!TIP]
+> **Worked Solutions**: Once you've attempted these exercises, check your implementations and answers in [`solutions.md`](solutions.md).
 
 ### Level 1: Recall & Conceptual
 1. If two vectors $\vec{u}$ and $\vec{v}$ have a dot product of $0$, what is the geometric relationship between them?

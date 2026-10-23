@@ -4,6 +4,14 @@
   <img src="../assets/05_information_theory.png" alt="05_Intuitive_Probability_and_Information_Theory Diagram" width="85%">
 </p>
 
+> [!NOTE]
+> ⏱️ **Estimated Study Time**: ~3 hours reading + ~2 hours exercises  
+> 🎯 **What "Done" Looks Like**:
+> - [ ] You understand probability distributions, Bayes' Theorem, and Maximum Likelihood Estimation.
+> - [ ] You can calculate Shannon entropy, Cross-Entropy loss, and KL divergence by hand and in code.
+> - [ ] You ran `python3 -m pytest tests/test_core.py -v` and verified that Module 05 tests pass.
+> - [ ] You attempted Level 1 & Level 2 exercises and verified them against [`solutions.md`](solutions.md).
+
 
 Welcome to Module 05 of **AI Research Foundations**. Machine learning models operate under uncertainty. When an LLM generates the next word, it doesn't give a single deterministic answer—it outputs a probability distribution across 50,000 vocabulary tokens. In this module, we demystify **probability distributions, Bayes' Theorem, Cross-Entropy loss, and KL Divergence**.
 
@@ -145,6 +153,9 @@ Properties of KL Divergence:
 ---
 
 ## 🏋️ Revision Exercises
+
+> [!TIP]
+> **Worked Solutions**: Once you've attempted these exercises, check your implementations and answers in [`solutions.md`](solutions.md).
 
 ### Level 1: Recall & Conceptual
 1. Why does Maximum Likelihood Estimation use the **sum of log probabilities** rather than the **product of raw probabilities**?
