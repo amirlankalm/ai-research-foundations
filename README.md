@@ -16,7 +16,7 @@
   <a href="https://github.com/amirlankalm/ai-research-foundations/stargazers"><img src="https://img.shields.io/github/stars/amirlankalm/ai-research-foundations?style=for-the-badge&logo=github&color=FFD700" alt="Stars"></a>
   <a href="https://github.com/amirlankalm/ai-research-foundations/network/members"><img src="https://img.shields.io/github/forks/amirlankalm/ai-research-foundations?style=for-the-badge&logo=github&color=3182CE" alt="Forks"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge" alt="License"></a>
-  <a href="https://paperleet.com"><img src="https://img.shields.io/badge/Community-Paperleet-purple.svg?style=for-the-badge" alt="Paperleet"></a>
+  <a href="#-curriculum-overview"><img src="https://img.shields.io/badge/Modules-20%20Step--by--Step-purple.svg?style=for-the-badge" alt="20 Modules"></a>
   <a href="https://arxiv.org/abs/2402.03300"><img src="https://img.shields.io/badge/Capstone-DeepSeekMath%20GRPO-orange.svg?style=for-the-badge" alt="DeepSeek GRPO"></a>
 </p>
 
@@ -53,7 +53,7 @@ Inspired by the structured, hands-on, community-driven spirit of **[30 Days of P
 2. **📖 Every Jargon Term Defined**: Whenever a technical term appears *(like latent vector, autograd, or KL divergence)*, a clear, plain-English definition is provided right next to it.
 3. **🛠️ Build From Scratch Before Using Libraries**: You will hand-code a scalar autograd engine (micrograd style), build a byte-pair tokenizer, construct self-attention, and assemble a GPT decoder from raw tensor operations before touching pre-built library abstractions.
 4. **🧠 Frontier Post-Training & Reasoning**: Unlike outdated courses that stop at 2017 transformers, this curriculum carries you directly through **Direct Preference Optimization (DPO)**, **Group Relative Policy Optimization (GRPO)**, and **Reasoning Models (DeepSeek-R1, test-time compute)**.
-5. **🎯 Real Paper Reproduction Capstone**: In the final module, you will set up [Paperleet](https://paperleet.com) and implement the algorithmic core of the breakthrough paper **[DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models (arXiv:2402.03300)](https://arxiv.org/abs/2402.03300)**.
+5. **🎯 Real Paper Reproduction Capstone**: In the final module, you will implement the algorithmic core of the breakthrough paper **[DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models (arXiv:2402.03300)](https://arxiv.org/abs/2402.03300)** from scratch in PyTorch. You'll also learn how to use platforms like [Paperleet](https://paperleet.com) *(a LeetCode-style tool for AI researchers)* to explore and track paper reproductions.
 
 ---
 
@@ -117,7 +117,7 @@ To get the most out of every module:
 flowchart LR
     A["1. Intuitive Reading<br/>(Concepts & Glossary)"] --> B["2. Hands-on Coding<br/>(Type & Execute Code)"]
     B --> C["3. Solve Revision Exercises<br/>(Level 1, 2, and 3)"]
-    C --> D["4. Share on Paperleet<br/>& Track Progress"]
+    C --> D["4. Track Progress &<br/>Paper Reproductions"]
     D --> A
 ```
 
@@ -139,7 +139,7 @@ flowchart LR
 In [Module 20](20_Capstone_Paper_Reproduction_DeepSeekMath_GRPO/README.md), you will integrate everything you have learned by reproducing the core algorithmic innovation of modern reasoning AI: **Group Relative Policy Optimization (GRPO)** from [DeepSeekMath (arXiv:2402.03300)](https://arxiv.org/abs/2402.03300).
 
 You will:
-1. Create an account on **[Paperleet](https://paperleet.com)** to follow paper discussions and share research notes.
+1. Deconstruct the DeepSeekMath paper mechanics (and see how to track reproduction challenges on tools like [Paperleet](https://paperleet.com) — like LeetCode for AI researchers).
 2. Build a rule-based math verifier for GSM8K problems.
 3. Implement the GRPO group reward normalizer:
    $$\hat{A}_{i,t} = \frac{r_i - \text{mean}(\{r_1, \dots, r_G\})}{\text{std}(\{r_1, \dots, r_G\}) + \epsilon}$$

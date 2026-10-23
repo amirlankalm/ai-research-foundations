@@ -21,29 +21,25 @@ Your goal is to reproduce the core algorithmic breakthrough of **[DeepSeekMath: 
 
 ```mermaid
 flowchart TD
-    Account["1. Create Paperleet Account<br/>(paperleet.com)"] --> Read["2. Three-Pass Read of arXiv:2402.03300"]
-    Read --> Build["3. Implement GRPO from First Principles in PyTorch"]
-    Build --> Verifier["4. Build Rule-Based Math Verifier (GSM8K format)"]
-    Verifier --> Train["5. Execute Training Run on Multi-Step Math Tasks"]
-    Train --> Report["6. Publish Reproduction Report & Share on Paperleet"]
+    Read["1. Deconstruct Paper arXiv:2402.03300<br/>(DeepSeekMath GRPO)"] --> Verifier["2. Build Rule-Based Math Verifier<br/>(GSM8K Integer Format)"]
+    Verifier --> Build["3. Implement GRPO Group Normalization<br/>& Clipped Loss in PyTorch"]
+    Build --> Train["4. Execute Training Run on Multi-Step Math Tasks"]
+    Train --> Report["5. Document Reproduction Findings<br/>(GitHub / Paperleet)"]
 ```
 
 ---
 
-## 🌐 Step 1: Set Up on Paperleet
+## 📖 Step 1: The Research Mission & Paper Selection
 
-1. Head to **[Paperleet](https://paperleet.com)** and create your researcher account.
-2. Search for the paper: **"DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models"** (or arXiv ID `2402.03300`).
-3. Check the community discussions, paper notes, and reproduction challenges.
-4. *(Optional)* If you wish to tackle an additional or alternative paper after finishing GRPO, explore trending community reproduction picks on Paperleet:
-   - **Direct Preference Optimization (arXiv:2305.18290)**
-   - **LoRA: Low-Rank Adaptation (arXiv:2106.09685)**
-   - **FlashAttention-2 (arXiv:2307.08691)**
-   - **DeepSeek-R1 (arXiv:2501.12948)**
+Our featured capstone paper is **[DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models (arXiv:2402.03300)](https://arxiv.org/abs/2402.03300)**.
+
+> [!NOTE]
+> **Optional Tool Spotlight: Paperleet (LeetCode for AI Researchers)**:
+> Think of **[Paperleet](https://paperleet.com)** like LeetCode, but for AI researchers: a community platform listing trending machine learning papers, problem prompts, and reproduction challenges. While we focus here on reproducing the breakthrough **DeepSeekMath GRPO** paper, you can also browse Paperleet to practice other classic reproduction challenges *(e.g. DPO, LoRA, FlashAttention, Mamba)*.
 
 ---
 
-## 📖 Step 2: The Paper at a Glance (arXiv:2402.03300)
+## 🔬 Step 2: The Paper at a Glance (arXiv:2402.03300)
 
 ### Why This Paper Matters
 Before DeepSeekMath, aligning models with Reinforcement Learning required **PPO**, which forced researchers to train a massive **Critic model** alongside the Actor. This consumed half of all GPU memory and caused persistent training instability.
@@ -180,14 +176,13 @@ def compute_grpo_loss(
 
 ---
 
-## 📋 Step 5: Writing Your Paperleet Reproduction Report
+## 📋 Step 5: Writing Your Reproduction Report
 
-Once your experiment runs, document your findings using the template below and publish it on **[Paperleet](https://paperleet.com)**:
+Once your experiment runs, document your findings using the template below. You can publish it in your repository notes or share it on platforms like **[Paperleet](https://paperleet.com)**:
 
 ```markdown
 # Reproduction Report: DeepSeekMath GRPO (arXiv:2402.03300)
 **Author**: [Your Name / GitHub Handle]  
-**Paperleet Profile**: [Link]  
 **Date**: October 2026  
 
 ## 1. Executive Summary

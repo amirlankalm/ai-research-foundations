@@ -88,9 +88,7 @@ Before believing a sensational claim on Twitter or LinkedIn, check for these red
 ## 🌐 The Modern Research Toolkit
 
 1. **[Paperleet](https://paperleet.com)**:
-   - Browse trending ArXiv papers voted on by developers and researchers.
-   - Join paper reading clubs and discussion threads.
-   - Find verified code reproductions and challenge yourself with reproduction tasks.
+   - A cool platform (like LeetCode for AI researchers) to browse trending papers, practice reproductions, and check community implementations.
 2. **[Hugging Face Daily Papers](https://huggingface.co/papers)**:
    - Daily community-curated feed linking ArXiv preprints directly to model weights and demo spaces.
 3. **[Semantic Scholar](https://www.semanticscholar.org)**:
