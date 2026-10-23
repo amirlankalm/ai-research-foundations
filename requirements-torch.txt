@@ -1,0 +1,10 @@
+# AI Research Foundations - Deep Learning Requirements (Modules 08, 09, 11, 12, 14, 15, 16, 18, 20)
+# Install core first, then PyTorch: pip install -r requirements-torch.txt
+
+-r requirements-core.txt
+
+torch>=2.2.0
+torchvision>=0.17.0
+torchaudio>=2.2.0
+tiktoken>=0.6.0
+tqdm>=4.66.0
