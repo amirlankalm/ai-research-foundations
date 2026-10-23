@@ -211,6 +211,41 @@ def generate(model, idx: torch.Tensor, max_new_tokens: int, temperature: float =
 
 ---
 
+## 🔬 Fully Worked Tiny Experiment: End-to-End Metrics
+
+To model what professional machine learning research code looks like, `nanogpt_model.py` provides a self-contained, reproducible training run with fixed random seeds, an untrained baseline, and a held-out validation metric:
+
+- **Seed**: `42`
+- **Architecture**: 2 Transformer blocks, 3 attention heads, embedding dimension $d_{\text{model}} = 48$, block size $16$ (hand-rolled `CausalSelfAttention`, zero library shortcuts).
+- **Dataset**: Hamlet soliloquy (197 characters, 30 unique character tokens).
+- **Split**: 80% train (157 characters), 20% held-out validation (40 characters).
+- **Baseline**: Theoretical uniform loss $- \ln(1/30) = 3.4012$ (Perplexity: 30.0).
+
+### Empirical Execution Results:
+```text
+============================================================
+🔬 MODULE 12: WORKED TINY LANGUAGE MODEL EXPERIMENT
+============================================================
+Dataset Size: 197 characters | Vocabulary: 30 unique chars
+Train/Val Split: 157 train chars / 40 val chars
+Theoretical Uniform Baseline Loss: 3.4012 (Perplexity: 30.0)
+Initial Step 0 Val Loss: 3.6662
+Step  50 | Train Loss: 2.8500 | Held-out Val Loss: 3.7110
+Step 100 | Train Loss: 3.0001 | Held-out Val Loss: 3.9769
+Step 150 | Train Loss: 2.7260 | Held-out Val Loss: 3.3321
+------------------------------------------------------------
+Generated Text (Prompt: 'To'):
+Tot s hts bueomhee'n ssesetue e,inefb th  
+------------------------------------------------------------
+✅ Module 12 experiment completed successfully!
+```
+Notice:
+1. At Step 0, untrained validation loss ($3.6662$) starts near the random uniform baseline ($3.4012$).
+2. By Step 150, training loss drops to $2.7260$ and held-out validation loss beats the baseline down to $3.3321$.
+3. The model begins grouping vowel-consonant clusters and spacing patterns autonomously.
+
+---
+
 ## 📚 Curated References
 
 1. **Andrej Karpathy - Let's build GPT: from scratch, in code**: [YouTube Video](https://www.youtube.com/watch?v=kCc8FmEb1nY)
