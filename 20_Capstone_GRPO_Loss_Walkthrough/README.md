@@ -104,7 +104,7 @@ $$D_{KL}(\pi_\theta \parallel \pi_{\text{ref}}) = \frac{\pi_{\text{ref}}(o_{i,t}
 ## 💻 Step 4: The Complete PyTorch Implementation
 
 Below is the complete, runnable implementation of the GRPO training step. You can also run the accompanying script:
-`python 20_Capstone_GRPO_Loss_Walkthrough/reproduce_deepseek_grpo.py`
+`python 20_Capstone_GRPO_Loss_Walkthrough/grpo_loss_walkthrough.py`
 
 ```python
 import re
@@ -225,10 +225,10 @@ Once your experiment runs, document your findings using the template below. You 
 3. What is the role of the format bonus reward in encouraging the model to generate structured reasoning traces?
 
 ### Level 2: Hands-On Implementation
-1. Run the companion script `reproduce_deepseek_grpo.py`:
+1. Run the companion script `grpo_loss_walkthrough.py`:
    - Inspect the printed group advantages.
    - Verify that policy loss decreases as the model shifts probability mass toward correct reasoning chains.
-2. Modify the verifier in `reproduce_deepseek_grpo.py` to support negative numbers and decimals.
+2. Modify the verifier in `grpo_loss_walkthrough.py` to support negative numbers and decimals.
 3. Test an ablation: set $\beta = 0.0$ (disabling the KL divergence penalty). What happens to the policy ratios $r_t$ over 50 iterations?
 
 ### Level 3: Research Deep Dive

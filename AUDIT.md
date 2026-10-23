@@ -31,13 +31,13 @@
 | **17 Reasoning Models** | Yes | `reasoning_search_demo.py` | **YES** (`python3 17_.../reasoning_search_demo.py`, 0.03s)<br>`Pass@1: 39.8% -> Best-of-31 Majority Voting: 82.1%` | Yes (3/2/1) | **NO** | Yes (`17_reasoning_models.png`) | Synthetic search simulation, not real LLM inference. |
 | **18 Interpretability & SAE** | Yes | `interpretability_sae_demo.py` | **YES** (`python3 18_.../interpretability_sae_demo.py`, 1.00s CPU)<br>`200 Epochs SAE ... Loss: 0.0381 ... Sparsity: 98.4% inactive` | Yes (3/2/1) | **NO** | Yes (`18_interpretability_sae.png`) | Trains SAE on synthetic activations, not live transformer layer. |
 | **19 Paper Reading** | Yes | `paper_critique_template.md` | **N/A** (Template only, no runnable script) | Yes (3/3/1) | **NO** | Yes (`19_three_pass_reading.png`) | Missing executable Python demo for citation graph or arXiv search. |
-| **20 Capstone: GRPO** | Yes | `reproduce_deepseek_grpo.py` | **YES** (`python3 20_.../reproduce_deepseek_grpo.py`, 0.98s CPU)<br>`4 Candidates ... Rewards [1.1, 1.1, 0.1, 0.0] ... GRPO Step 1..5 Loss: 0.00 -> -0.189` | Yes (3/3/2) | **NO** | Yes (`20_capstone_grpo_paper.png`) | **OVERCLAIM:** Claimed "Full reproduction on GSM8K". It is a standalone algorithmic walkthrough. |
+| **20 Capstone: GRPO** | Yes | `grpo_loss_walkthrough.py` | **YES** (`python3 20_.../grpo_loss_walkthrough.py`, 0.98s CPU)<br>`4 Candidates ... Rewards [1.1, 1.1, 0.1, 0.0] ... GRPO Step 1..5 Loss: 0.00 -> -0.189` | Yes (3/3/2) | **NO** | Yes (`20_capstone_grpo_paper.png`) | **HONEST WALKTHROUGH:** Renamed from "reproduction" to standalone loss & group advantage walkthrough. |
 
 ---
 
 ## 2. Mathematical Audit of DeepSeekMath (arXiv:2402.03300)
 
-We conducted a mathematical verification comparing our GRPO code (`16_.../grpo_core.py` and `20_.../reproduce_deepseek_grpo.py`) directly against **Section 3 of arXiv:2402.03300**:
+We conducted a mathematical verification comparing our GRPO code (`16_.../grpo_core.py` and `20_.../grpo_loss_walkthrough.py`) directly against **Section 3 of arXiv:2402.03300**:
 
 ### Paper Formulation:
 $$\mathcal{J}_{\text{GRPO}}(\theta) = \mathbb{E} \left[ \frac{1}{G} \sum_{i=1}^G \frac{1}{|o_i|} \sum_{t=1}^{|o_i|} \left( \min(r_{i,t} \hat{A}_i, \text{clip}(r_{i,t}, 1-\epsilon, 1+\epsilon) \hat{A}_i) - \beta D_{KL}(\pi_\theta \parallel \pi_{\text{ref}}) \right) \right]$$

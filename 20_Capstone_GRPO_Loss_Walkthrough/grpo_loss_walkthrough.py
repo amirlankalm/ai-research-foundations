@@ -1,7 +1,7 @@
 """
-AI Research Foundations - Module 20: Full Capstone DeepSeekMath GRPO Reproduction
-Paper: DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models (arXiv:2402.03300)
-Run with: python reproduce_deepseek_grpo.py
+AI Research Foundations - Module 20: GRPO Loss Math & Group Normalization Walkthrough
+Paper Reference: DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models (arXiv:2402.03300)
+Run with: python grpo_loss_walkthrough.py
 """
 
 import re
@@ -84,7 +84,7 @@ def grpo_loss(
 # -------------------------------------------------------------
 if __name__ == "__main__":
     print("=" * 70)
-    print("🚀 DEEPSEEKMATH GRPO REPRODUCTION RUN (arXiv:2402.03300)")
+    print("🚀 DEEPSEEKMATH GRPO LOSS & VERIFIER WALKTHROUGH (arXiv:2402.03300)")
     print("=" * 70)
     torch.manual_seed(42)
 
@@ -143,6 +143,6 @@ if __name__ == "__main__":
         print(f"GRPO Step {step} | Loss: {loss.item():.5f}")
 
     print("\n" + "=" * 70)
-    print("✅ CAPSTONE REPRODUCTION COMPLETED SUCCESSFULLY!")
-    print("Next step: Document your run and share your report on https://paperleet.com")
+    print("✅ GRPO LOSS WALKTHROUGH COMPLETED SUCCESSFULLY!")
+    print("You have verified group normalization, clipped surrogate loss, and analytical KL divergence.")
     print("=" * 70)

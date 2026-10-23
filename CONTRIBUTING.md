@@ -32,7 +32,7 @@ We welcome contributions of all kinds: fixing typos, improving visual diagrams, 
 4. **Test your code**: Ensure the pytest test suite and companion scripts execute cleanly without errors:
    ```bash
    python3 -m pytest tests/ -v
-   python3 20_Capstone_GRPO_Loss_Walkthrough/reproduce_deepseek_grpo.py
+   python3 20_Capstone_GRPO_Loss_Walkthrough/grpo_loss_walkthrough.py
    ```
 5. **Commit your changes** with descriptive commit messages following the Conventional Commits specification:
    - `docs: fix typo in Module 03 dot product section`
