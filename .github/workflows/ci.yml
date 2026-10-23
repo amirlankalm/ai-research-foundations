@@ -37,8 +37,8 @@ jobs:
     - name: Smoke Test Sample Runnable Modules
       run: |
         python 01_Python_and_Research_Tooling/tooling_demo.py
-        python 02_NumPy_Vectorization_and_Data/vectorization_demo.py
+        python 02_NumPy_Vectorization_and_Data/numpy_foundations.py
         python 04_Intuitive_Calculus_and_Optimization/optimization_demo.py
-        python 05_Intuitive_Probability_and_Information_Theory/prob_info_demo.py
-        python 07_Neural_Networks_and_Autograd_From_Scratch/micrograd_demo.py
+        python 05_Intuitive_Probability_and_Information_Theory/probability_info_demo.py
+        python 07_Neural_Networks_and_Autograd_From_Scratch/micrograd_engine.py
         python 20_Capstone_GRPO_Loss_Walkthrough/reproduce_deepseek_grpo.py
