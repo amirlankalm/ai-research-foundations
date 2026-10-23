@@ -1,7 +1,7 @@
-# 20. Capstone Project: Reproducing DeepSeekMath & GRPO
+# 20. Capstone Walkthrough: DeepSeekMath GRPO Loss
 
 <p align="center">
-  <img src="../assets/20_capstone_grpo_paper.png" alt="20_Capstone_Paper_Reproduction_DeepSeekMath_GRPO Diagram" width="85%">
+  <img src="../assets/20_capstone_grpo_paper.png" alt="20_Capstone_GRPO_Loss_Walkthrough Diagram" width="85%">
 </p>
 
 
@@ -9,22 +9,22 @@
   <img src="../assets/banner.png" alt="Capstone Banner" width="100%">
 </p>
 
-Welcome to the **Grand Capstone Project** of **AI Research Foundations**!
+Welcome to the **Capstone Walkthrough** of **AI Research Foundations**!
 
-You have journeyed across 19 intensive modules: from building autograd from scratch, writing tokenizers, and assembling GPT decoders, to mastering deep RL, PPO, DPO, and transformer interpretability. Now, you step into the shoes of an **AI Researcher** to execute an end-to-end reproduction of one of the most influential machine learning papers of the modern era.
+You have journeyed across 19 intensive modules: from building autograd from scratch, writing tokenizers, and assembling GPT decoders, to mastering deep RL, PPO, DPO, and transformer interpretability. Now, you step into the shoes of an **AI Researcher** to walk through the algorithmic and loss implementation of one of the most influential machine learning papers of the modern reasoning era.
 
 ---
 
 ## 🎯 The Capstone Mission
 
-Your goal is to reproduce the core algorithmic breakthrough of **[DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models (arXiv:2402.03300)](https://arxiv.org/abs/2402.03300)**: **Group Relative Policy Optimization (GRPO)**.
+Your goal is to understand and implement the core mathematical and loss mechanics of **[DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models (arXiv:2402.03300)](https://arxiv.org/abs/2402.03300)**: **Group Relative Policy Optimization (GRPO)**.
 
 ```mermaid
 flowchart TD
     Read["1. Deconstruct Paper arXiv:2402.03300<br/>(DeepSeekMath GRPO)"] --> Verifier["2. Build Rule-Based Math Verifier<br/>(GSM8K Integer Format)"]
     Verifier --> Build["3. Implement GRPO Group Normalization<br/>& Clipped Loss in PyTorch"]
-    Build --> Train["4. Execute Training Run on Multi-Step Math Tasks"]
-    Train --> Report["5. Document Reproduction Findings<br/>(GitHub / Paperleet)"]
+    Build --> Train["4. Execute Walkthrough Run on Multi-Step Math Tasks"]
+    Train --> Report["5. Document Reproduction Findings<br/>(GitHub / Optional Paperleet)"]
 ```
 
 ---
@@ -104,7 +104,7 @@ $$D_{KL}(\pi_\theta \parallel \pi_{\text{ref}}) = \frac{\pi_{\text{ref}}(o_{i,t}
 ## 💻 Step 4: The Complete PyTorch Implementation
 
 Below is the complete, runnable implementation of the GRPO training step. You can also run the accompanying script:
-`python 20_Capstone_Paper_Reproduction_DeepSeekMath_GRPO/reproduce_deepseek_grpo.py`
+`python 20_Capstone_GRPO_Loss_Walkthrough/reproduce_deepseek_grpo.py`
 
 ```python
 import re
