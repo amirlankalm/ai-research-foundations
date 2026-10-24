@@ -4,6 +4,18 @@
   <img src="../assets/12_gpt_decoder_stack.png" alt="12_Building_GPT_From_Scratch Diagram" width="85%">
 </p>
 
+<p align="center">
+  <a href="https://colab.research.google.com/github/amirlankalm/ai-research-foundations/blob/main/12_Building_GPT_From_Scratch/module_12.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a>
+</p>
+
+> [!NOTE]
+> ⏱️ **Estimated Study Time**: ~4 hours reading + ~3 hours exercises  
+> 🎯 **What "Done" Looks Like**:
+> - [ ] You understand Pre-LN Transformer blocks and weight tying between embeddings and `lm_head`.
+> - [ ] You can implement the autoregressive generation loop with temperature scaling and top-k filtering.
+> - [ ] You ran `python3 12_Building_GPT_From_Scratch/nanogpt_model.py` and reproduced the loss drop beating the uniform baseline.
+> - [ ] You attempted the Level 1 & Level 2 exercises.
+
 
 Welcome to Module 12 of **AI Research Foundations**. In this module, we assemble all the components we have learned—embeddings, multi-head attention, layer normalization, residual connections, and softmax—into a complete, functional **Generative Pre-trained Transformer (GPT)** modeled after Andrej Karpathy's famous **nanoGPT**.
 
@@ -16,7 +28,7 @@ By the end of this module, you will:
 - Construct the `TransformerBlock` and assemble the full `GPT` class in PyTorch.
 - Master **weight tying** between token embeddings and the final language modeling head.
 - Implement autoregressive generation with **temperature scaling** and **top-k sampling**.
-- Train your GPT model to generate Shakespeare-style text from raw character/token streams.
+- Train your miniature GPT on a character-level text corpus and observe how next-token prediction loss decreases as the model learns spelling and spacing (with an optional command to scale up to Karpathy's full tiny-shakespeare corpus).
 
 ---
 
@@ -257,13 +269,15 @@ Notice:
 
 ## 🏋️ Revision Exercises
 
+> 💡 **Solutions Available**: Stuck on an exercise or want to verify your code? Check out the complete reference solutions in [`solutions.md`](./solutions.md).
+
 ### Level 1: Recall & Conceptual
 1. What is **weight tying** *(sharing weights between `wte` and `lm_head`)*, and why does it save memory and improve language modeling?
 2. Why do we slice `x[:, [-1], :]` when generating text without target labels?
 3. What happens to generation when `temperature = 0.0001` vs `temperature = 5.0`?
 
 ### Level 2: Hands-On Implementation
-1. Run the companion script `nanogpt_model.py` and train the model for 200 iterations on a mini text passage. Verify that training loss drops below $1.5$.
+1. Run the companion script `nanogpt_model.py` for 150 iterations on the bundled text. Verify that training loss drops below $2.8$ and decisively beats the theoretical random baseline ($3.40$). *(Optional scale-up: download Karpathy's 1MB tiny-shakespeare corpus via `curl -O https://raw.githubusercontent.com/karpathy/char-rnn/master/data/tinyshakespeare/input.txt` and train for 2,000 steps to reach loss below 1.6)*.
 2. Add **Top-P (Nucleus) Sampling** to the `generate` function:
    - Sort probabilities in descending order.
    - Compute cumulative sum of probabilities.

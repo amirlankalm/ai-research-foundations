@@ -50,7 +50,7 @@ Inspired by the structured, hands-on, community-driven spirit of **[30 Days of P
 
 ## 🗺️ Curriculum Overview
 
-Follow the modules sequentially. Each folder contains a detailed, beautifully illustrated guide (`README.md`) complete with theory, term definitions, runnable Python code, and graded **revision exercises** at three difficulty levels.
+Follow the modules sequentially. Each folder contains a detailed, beautifully illustrated guide (`README.md`) complete with theory, term definitions, runnable Python code, interactive **Google Colab** notebooks, graded **revision exercises** at three difficulty levels, and complete worked reference **solutions** (`solutions.md`) for every module.
 
 | # | Module Topic | Core Focus | Stage & Tools | Link |
 |---|---|---|---|---|
@@ -176,7 +176,7 @@ This curriculum synthesizes the finest open educational resources in computer sc
 - **The Little Book of Deep Learning (François Fleuret)**: [fleuret.org/public/lbdl.pdf](https://fleuret.org/public/lbdl.pdf)
 
 ### 🔬 Research Platforms & Papers
-- **Paperleet**: [paperleet.com](https://paperleet.com)
+- **Paperleet**: [paperleet.com](https://paperleet.com) *(Disclosure: an independent practice platform I am building for paper reproductions)*
 - **Hugging Face Daily Papers**: [huggingface.co/papers](https://huggingface.co/papers)
 - **Semantic Scholar**: [semanticscholar.org](https://www.semanticscholar.org)
 - **LabML Annotated Paper Implementations**: [nn.labml.ai](https://nn.labml.ai/)
@@ -200,4 +200,4 @@ Please read our [Contributing Guide](CONTRIBUTING.md) and [Code of Conduct](CODE
 
 ## 🏷️ Search Topics & Index Keywords
 
-`artificial-intelligence` • `deep-learning` • `machine-learning` • `reinforcement-learning` • `pytorch` • `transformers` • `llm` • `large-language-models` • `deepseek` • `deepseek-r1` • `grpo` • `rlhf` • `dpo` • `paper-reproduction` • `ai-research` • `python` • `neural-networks` • `reasoning-models` • `interpretability` • `paperleet`
+`artificial-intelligence` • `deep-learning` • `machine-learning` • `reinforcement-learning` • `pytorch` • `transformers` • `llm` • `large-language-models` • `deepseek` • `deepseek-r1` • `grpo` • `rlhf` • `dpo` • `paper-walkthrough` • `ai-research` • `python` • `neural-networks` • `reasoning-models` • `interpretability` • `paperleet`

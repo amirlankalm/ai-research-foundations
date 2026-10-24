@@ -9,6 +9,18 @@
   <img src="../assets/banner.png" alt="Capstone Banner" width="100%">
 </p>
 
+<p align="center">
+  <a href="https://colab.research.google.com/github/amirlankalm/ai-research-foundations/blob/main/20_Capstone_GRPO_Loss_Walkthrough/module_20.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a>
+</p>
+
+> [!NOTE]
+> ⏱️ **Estimated Study Time**: ~3 hours reading + ~3 hours implementation & walkthrough  
+> 🎯 **What "Done" Looks Like**:
+> - [ ] You can derive the mathematical formulation of GRPO from Section 3 of arXiv:2402.03300.
+> - [ ] You understand why group-relative advantage estimation eliminates the parametric Critic model required by PPO.
+> - [ ] You ran `python3 20_Capstone_GRPO_Loss_Walkthrough/grpo_loss_walkthrough.py` and saw group advantage normalization and loss convergence on CPU.
+> - [ ] You drafted a walkthrough report using the template in Section 5 documenting experimental setup, advantages, and ablations.
+
 Welcome to the **Capstone Walkthrough** of **AI Research Foundations**!
 
 You have journeyed across 19 intensive modules: from building autograd from scratch, writing tokenizers, and assembling GPT decoders, to mastering deep RL, PPO, DPO, and transformer interpretability. Now, you step into the shoes of an **AI Researcher** to walk through the algorithmic and loss implementation of one of the most influential machine learning papers of the modern reasoning era.
@@ -24,7 +36,7 @@ flowchart TD
     Read["1. Deconstruct Paper arXiv:2402.03300<br/>(DeepSeekMath GRPO)"] --> Verifier["2. Build Rule-Based Math Verifier<br/>(GSM8K Integer Format)"]
     Verifier --> Build["3. Implement GRPO Group Normalization<br/>& Clipped Loss in PyTorch"]
     Build --> Train["4. Execute Walkthrough Run on Multi-Step Math Tasks"]
-    Train --> Report["5. Document Reproduction Findings<br/>(GitHub / Optional Paperleet)"]
+    Train --> Report["5. Document Walkthrough Findings<br/>(GitHub / Optional Next-Level Challenges)"]
 ```
 
 ---
@@ -35,7 +47,7 @@ Our featured capstone paper is **[DeepSeekMath: Pushing the Limits of Mathematic
 
 > [!NOTE]
 > **Optional Tool Spotlight: Paperleet (LeetCode for AI Researchers)**:
-> Think of **[Paperleet](https://paperleet.com)** like LeetCode, but for AI researchers: a community platform listing trending machine learning papers, problem prompts, and reproduction challenges. While we focus here on reproducing the breakthrough **DeepSeekMath GRPO** paper, you can also browse Paperleet to practice other classic reproduction challenges *(e.g. DPO, LoRA, FlashAttention, Mamba)*.
+> Think of **[Paperleet](https://paperleet.com)** like LeetCode, but for AI researchers: a community platform listing trending machine learning papers, problem prompts, and reproduction challenges *(Disclosure: Paperleet is an independent platform I am building to make AI paper reproduction as structured as LeetCode)*. While we focus in this capstone on walking through the algorithmic loss and group advantage mechanics of the breakthrough **DeepSeekMath GRPO** paper on CPU, you can also browse Paperleet to practice other classic reproduction challenges *(e.g. DPO, LoRA, FlashAttention, Mamba)*.
 
 ---
 
@@ -176,12 +188,12 @@ def compute_grpo_loss(
 
 ---
 
-## 📋 Step 5: Writing Your Reproduction Report
+## 📋 Step 5: Writing Your Walkthrough Report
 
 Once your experiment runs, document your findings using the template below. You can publish it in your repository notes or share it on platforms like **[Paperleet](https://paperleet.com)**:
 
 ```markdown
-# Reproduction Report: DeepSeekMath GRPO (arXiv:2402.03300)
+# Walkthrough Report: DeepSeekMath GRPO Loss (arXiv:2402.03300)
 **Author**: [Your Name / GitHub Handle]  
 **Date**: October 2026  
 
@@ -218,6 +230,8 @@ Once your experiment runs, document your findings using the template below. You 
 ---
 
 ## 🏋️ Final Capstone Revision Exercises
+
+> 💡 **Solutions Available**: Stuck on an exercise or want to verify your code? Check out the complete reference solutions in [`solutions.md`](./solutions.md).
 
 ### Level 1: Recall & Conceptual
 1. State the three main components of the GRPO objective function in Section 3 of arXiv:2402.03300.

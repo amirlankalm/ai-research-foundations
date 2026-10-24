@@ -4,6 +4,14 @@
   <img src="../assets/06_ml_bias_variance.png" alt="06_Classical_Machine_Learning Diagram" width="85%">
 </p>
 
+> [!NOTE]
+> ⏱️ **Estimated Study Time**: ~2.5 hours reading + ~2 hours exercises  
+> 🎯 **What "Done" Looks Like**:
+> - [ ] You can explain the bias-variance tradeoff and how L1/L2 regularization prevents overfitting.
+> - [ ] You understand precision, recall, F1, and why accuracy fails on imbalanced classes.
+> - [ ] You ran `python3 -m pytest tests/test_core.py -v` and verified that Module 06 tests pass.
+> - [ ] You attempted the Level 1 & Level 2 exercises.
+
 
 Welcome to Module 06 of **AI Research Foundations**. Before diving into deep neural networks and trillion-parameter transformers, every serious AI researcher must understand **classical machine learning**. The core principles of generalization, evaluation metrics, overfitting, and data splitting were pioneered here.
 
@@ -155,6 +163,8 @@ print(f"ROC-AUC Score: {roc_auc_score(y_test, y_prob):.3f}")
 ---
 
 ## 🏋️ Revision Exercises
+
+> 💡 **Solutions Available**: Stuck on an exercise or want to verify your code? Check out the complete reference solutions in [`solutions.md`](./solutions.md).
 
 ### Level 1: Recall & Conceptual
 1. What is the fundamental difference between **Supervised** and **Self-Supervised** learning?

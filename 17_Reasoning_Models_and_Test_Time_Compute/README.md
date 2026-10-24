@@ -4,6 +4,14 @@
   <img src="../assets/17_reasoning_models.png" alt="17_Reasoning_Models_and_Test_Time_Compute Diagram" width="85%">
 </p>
 
+> [!NOTE]
+> ⏱️ **Estimated Study Time**: ~3 hours reading + ~2 hours exercises  
+> 🎯 **What "Done" Looks Like**:
+> - [ ] You understand why test-time compute (sampling, search, voting) converts inference FLOPs into reasoning accuracy.
+> - [ ] You understand Process Reward Models (PRMs) vs. Outcome Reward Models (ORMs).
+> - [ ] You understand how DeepSeek-R1 unlocked emergent reasoning behaviors (backtracking, verification) purely through large-scale RL.
+> - [ ] You ran `python3 17_Reasoning_Models_and_Test_Time_Compute/reasoning_search_demo.py` and observed pass@k accuracy scaling.
+
 
 Welcome to Module 17 of **AI Research Foundations**. In traditional NLP, models operated like Daniel Kahneman's **System 1**: fast, intuitive, instantaneous pattern recognition. The frontier of modern AI has shifted to **System 2 reasoning**: deliberate, step-by-step thinking, self-correction, backtracking, and test-time compute scaling.
 
@@ -130,6 +138,8 @@ Rather than spending millions of dollars to pre-train a 400-billion-parameter mo
 ---
 
 ## 🏋️ Revision Exercises
+
+> 💡 **Solutions Available**: Stuck on an exercise or want to verify your code? Check out the complete reference solutions in [`solutions.md`](./solutions.md).
 
 ### Level 1: Recall & Conceptual
 1. Why does writing intermediate reasoning tokens allow a fixed-depth transformer to solve problems it cannot solve with a single direct answer?

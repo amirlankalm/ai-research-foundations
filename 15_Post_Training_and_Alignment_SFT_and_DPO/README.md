@@ -4,6 +4,14 @@
   <img src="../assets/15_dpo_alignment.png" alt="15_Post_Training_and_Alignment_SFT_and_DPO Diagram" width="85%">
 </p>
 
+> [!NOTE]
+> ⏱️ **Estimated Study Time**: ~3 hours reading + ~2 hours exercises  
+> 🎯 **What "Done" Looks Like**:
+> - [ ] You can structure multi-turn chat templates with special control tokens (`<|im_start|>`, `<|im_end|>`).
+> - [ ] You understand how LoRA compresses parameter updates into rank-$r$ matrices ($W + \frac{\alpha}{r} BA$).
+> - [ ] You understand how DPO mathematically bypasses the reward model to optimize preference directly via implicit reward formulation.
+> - [ ] You ran `python3 15_Post_Training_and_Alignment_SFT_and_DPO/dpo_loss.py` and saw DPO loss decrease on winning completions.
+
 
 Welcome to Module 15 of **AI Research Foundations**. A raw pre-trained foundation model is essentially an internet document completion simulator. If you prompt it with *"How do I bake bread?"*, it might reply with *"Chapter 2: Yeast and Flour"* instead of an answer! 
 
@@ -133,6 +141,8 @@ flowchart TD
 ---
 
 ## 🏋️ Revision Exercises
+
+> 💡 **Solutions Available**: Stuck on an exercise or want to verify your code? Check out the complete reference solutions in [`solutions.md`](./solutions.md).
 
 ### Level 1: Recall & Conceptual
 1. Why must we mask user prompt tokens with target value `-100` during Supervised Fine-Tuning?

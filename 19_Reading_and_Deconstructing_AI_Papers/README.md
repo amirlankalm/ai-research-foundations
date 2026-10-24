@@ -4,6 +4,14 @@
   <img src="../assets/19_three_pass_reading.png" alt="19_Reading_and_Deconstructing_AI_Papers Diagram" width="85%">
 </p>
 
+> [!NOTE]
+> ⏱️ **Estimated Study Time**: ~2 hours reading + ~1.5 hours exercises  
+> 🎯 **What "Done" Looks Like**:
+> - [ ] You can apply S. Keshav's Three-Pass Method to evaluate an empirical preprint in under an hour.
+> - [ ] You can deconstruct an AI paper's narrative anatomy: Abstract, Core Equations, Baselines, and Ablations.
+> - [ ] You filled out `19_Reading_and_Deconstructing_AI_Papers/paper_critique_template.md` for arXiv:2402.03300 (DeepSeekMath).
+> - [ ] You can detect common empirical red flags: weak baselines, confounded variables, and benchmark contamination.
+
 
 Welcome to Module 19 of **AI Research Foundations**. In modern AI, textbooks become outdated within six months. The true living literature of artificial intelligence exists on **arXiv**, where thousands of preprints are uploaded every week. 
 
@@ -88,7 +96,7 @@ Before believing a sensational claim on Twitter or LinkedIn, check for these red
 ## 🌐 The Modern Research Toolkit
 
 1. **[Paperleet](https://paperleet.com)**:
-   - A cool platform (like LeetCode for AI researchers) to browse trending papers, practice reproductions, and check community implementations.
+   - A community platform (like LeetCode for AI researchers) to browse trending papers, track reproductions, and check community implementations *(Disclosure: an independent practice platform I am building for paper reproductions)*.
 2. **[Hugging Face Daily Papers](https://huggingface.co/papers)**:
    - Daily community-curated feed linking ArXiv preprints directly to model weights and demo spaces.
 3. **[Semantic Scholar](https://www.semanticscholar.org)**:
@@ -108,6 +116,8 @@ Before believing a sensational claim on Twitter or LinkedIn, check for these red
 ---
 
 ## 🏋️ Revision Exercises
+
+> 💡 **Solutions Available**: Stuck on an exercise or want to verify your code? Check out the complete reference solutions in [`solutions.md`](./solutions.md).
 
 ### Level 1: Recall & Conceptual
 1. What are the specific objectives and timeframes of **Pass 1**, **Pass 2**, and **Pass 3** in Keshav's method?

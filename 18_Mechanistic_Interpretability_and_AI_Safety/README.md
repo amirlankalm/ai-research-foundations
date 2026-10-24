@@ -4,6 +4,14 @@
   <img src="../assets/18_interpretability_sae.png" alt="18_Mechanistic_Interpretability_and_AI_Safety Diagram" width="85%">
 </p>
 
+> [!NOTE]
+> ⏱️ **Estimated Study Time**: ~3 hours reading + ~2 hours exercises  
+> 🎯 **What "Done" Looks Like**:
+> - [ ] You can explain polysemanticity, superposition, and why Sparse Autoencoders (SAEs) disentangle monosemantic features.
+> - [ ] You understand how induction heads implement in-context few-shot learning across two attention layers.
+> - [ ] You ran `python3 18_Mechanistic_Interpretability_and_AI_Safety/interpretability_sae_demo.py` and saw L1 sparsity enforce clean feature separation.
+> - [ ] You attempted the Level 1 & Level 2 exercises.
+
 
 Welcome to Module 18 of **AI Research Foundations**. Deep neural networks are often described as "black boxes." But in frontier AI research, treating models as inscrutable mystery boxes is dangerous. **Mechanistic Interpretability** treats neural networks like compiled machine code: our job is to reverse-engineer the weights back into human-understandable algorithms and verify their safety.
 
@@ -127,6 +135,8 @@ As models grow more autonomous, safety research focuses on preventing severe fai
 ---
 
 ## 🏋️ Revision Exercises
+
+> 💡 **Solutions Available**: Stuck on an exercise or want to verify your code? Check out the complete reference solutions in [`solutions.md`](./solutions.md).
 
 ### Level 1: Recall & Conceptual
 1. In plain English, what is the operational difference between the **Q-K Circuit** and the **O-V Circuit** of an attention head?

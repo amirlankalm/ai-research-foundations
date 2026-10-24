@@ -4,6 +4,18 @@
   <img src="../assets/07_autograd_computational_graph.png" alt="07_Neural_Networks_and_Autograd_From_Scratch Diagram" width="85%">
 </p>
 
+<p align="center">
+  <a href="https://colab.research.google.com/github/amirlankalm/ai-research-foundations/blob/main/07_Neural_Networks_and_Autograd_From_Scratch/module_07.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a>
+</p>
+
+> [!NOTE]
+> ⏱️ **Estimated Study Time**: ~3.5 hours reading + ~2.5 hours exercises  
+> 🎯 **What "Done" Looks Like**:
+> - [ ] You can explain why gradients accumulate (`+=`) across branches and why topological sort is required.
+> - [ ] You have implemented a scalar `Value` class with forward and backward closures for arithmetic and ReLU.
+> - [ ] You ran `python3 -m pytest tests/test_core.py -v` and verified that Module 07 tests pass.
+> - [ ] You solved Level 1 & Level 2 exercises and verified them against [`solutions.md`](solutions.md).
+
 
 Welcome to Module 07 of **AI Research Foundations**. Here we enter deep learning. Following Andrej Karpathy's famous **Zero to Hero** pedagogy, we will not use PyTorch, TensorFlow, or any deep learning framework. Instead, we will construct our own scalar **automatic differentiation engine** *(autograd)* and train a multi-layer neural network from pure Python!
 
@@ -227,6 +239,9 @@ for epoch in range(50):
 ---
 
 ## 🏋️ Revision Exercises
+
+> [!TIP]
+> **Worked Solutions**: Once you've attempted these exercises, check your implementations, XOR training code, and Level 3 research notes in [`solutions.md`](solutions.md).
 
 ### Level 1: Recall & Conceptual
 1. Why must `grad` be accumulated using `+=` rather than assigned with `=` during backpropagation? *(Hint: What happens when a variable is used multiple times in an expression, like $f(x) = x \cdot x + x$?)*

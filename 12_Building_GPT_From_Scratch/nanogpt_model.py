@@ -131,13 +131,19 @@ def run_worked_experiment():
     """
     torch.manual_seed(42)
 
-    raw_text = (
-        "To be, or not to be, that is the question: "
-        "Whether 'tis nobler in the mind to suffer "
-        "The slings and arrows of outrageous fortune, "
-        "Or to take arms against a sea of troubles "
-        "And by opposing end them."
-    )
+    import os
+    if os.path.exists("input.txt"):
+        with open("input.txt", "r", encoding="utf-8") as f:
+            raw_text = f.read()[:50000] # Use first 50k chars for quick CPU training
+        print("📖 Loaded local corpus 'input.txt'!")
+    else:
+        raw_text = (
+            "To be, or not to be, that is the question: "
+            "Whether 'tis nobler in the mind to suffer "
+            "The slings and arrows of outrageous fortune, "
+            "Or to take arms against a sea of troubles "
+            "And by opposing end them."
+        )
     chars = sorted(list(set(raw_text)))
     vocab_size = len(chars)
     stoi = {ch: i for i, ch in enumerate(chars)}

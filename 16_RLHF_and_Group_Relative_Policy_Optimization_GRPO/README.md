@@ -4,6 +4,14 @@
   <img src="../assets/16_deepseek_grpo.png" alt="16_RLHF_and_Group_Relative_Policy_Optimization_GRPO Diagram" width="85%">
 </p>
 
+> [!NOTE]
+> ⏱️ **Estimated Study Time**: ~3.5 hours reading + ~2.5 hours exercises  
+> 🎯 **What "Done" Looks Like**:
+> - [ ] You understand why traditional PPO's Critic model caused a severe GPU memory bottleneck during RLHF.
+> - [ ] You can implement the GRPO group advantage normalization formula $\hat{A}_i = \frac{r_i - \text{mean}(r)}{\text{std}(r) + \epsilon}$.
+> - [ ] You understand why rule-based verifiers eliminate reward hacking on reasoning tasks.
+> - [ ] You solved Level 1 & Level 2 exercises and verified them against [`solutions.md`](solutions.md).
+
 
 Welcome to Module 16 of **AI Research Foundations**. In this module, we examine the reinforcement learning methods that align foundation models and unlock reasoning: the traditional **RLHF** pipeline and DeepSeek's breakthrough algorithm: **Group Relative Policy Optimization (GRPO)**.
 
@@ -107,6 +115,9 @@ GRPO has three major advantages:
 ---
 
 ## 🏋️ Revision Exercises
+
+> [!TIP]
+> **Worked Solutions**: Once you've attempted these exercises, check your group advantage implementations and leave-one-out comparison in [`solutions.md`](solutions.md).
 
 ### Level 1: Recall & Conceptual
 1. Why does traditional PPO require maintaining a Critic network alongside the Actor?

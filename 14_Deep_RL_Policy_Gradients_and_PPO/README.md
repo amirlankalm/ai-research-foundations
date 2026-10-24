@@ -4,6 +4,14 @@
   <img src="../assets/14_ppo_clipping.png" alt="14_Deep_RL_Policy_Gradients_and_PPO Diagram" width="85%">
 </p>
 
+> [!NOTE]
+> ⏱️ **Estimated Study Time**: ~3.5 hours reading + ~2.5 hours exercises  
+> 🎯 **What "Done" Looks Like**:
+> - [ ] You can derive the Policy Gradient Theorem and explain the log-derivative trick.
+> - [ ] You understand how the Critic state baseline reduces Monte Carlo return variance.
+> - [ ] You understand why PPO's clipped surrogate objective prevents destructive policy updates.
+> - [ ] You solved Level 1 & Level 2 exercises and verified them against [`solutions.md`](solutions.md).
+
 
 Welcome to Module 14 of **AI Research Foundations**. While value-based methods like Q-Learning work well for small action spaces, language models generate tokens from a massive vocabulary of 50,000+ choices at every position. To train models with large action spaces and continuous trajectories, we turn to **Policy Gradient methods**, culminating in **Proximal Policy Optimization (PPO)**.
 
@@ -132,6 +140,9 @@ flowchart TD
 ---
 
 ## 🏋️ Revision Exercises
+
+> [!TIP]
+> **Worked Solutions**: Once you've attempted these exercises, check your implementations and GAE analysis in [`solutions.md`](solutions.md).
 
 ### Level 1: Recall & Conceptual
 1. Why is the log-derivative trick $\nabla_\theta \log \pi_\theta(a \mid s)$ essential for executing policy gradients on computers?

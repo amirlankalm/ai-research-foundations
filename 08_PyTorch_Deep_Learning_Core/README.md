@@ -4,6 +4,14 @@
   <img src="../assets/08_pytorch_ecosystem.png" alt="08_PyTorch_Deep_Learning_Core Diagram" width="85%">
 </p>
 
+> [!NOTE]
+> ⏱️ **Estimated Study Time**: ~3 hours reading + ~2 hours exercises  
+> 🎯 **What "Done" Looks Like**:
+> - [ ] You understand `torch.Tensor` operations, autograd tracking (`requires_grad=True`), and hardware devices (`cuda`/`mps`).
+> - [ ] You can structure clean models with `nn.Module` and data pipelines with `Dataset` and `DataLoader`.
+> - [ ] You understand why `optimizer.zero_grad(set_to_none=True)` is called before backpropagation.
+> - [ ] You ran `python3 08_PyTorch_Deep_Learning_Core/pytorch_pipeline.py` and saw all 5 training epochs succeed.
+
 
 Welcome to Module 08 of **AI Research Foundations**. In Module 07, you built a scalar autograd engine from scratch. Now that you understand the mechanics of computational graphs and backpropagation, we transition to **PyTorch**, the primary framework of modern AI research.
 
@@ -211,6 +219,8 @@ print("Restored checkpoint from epoch", checkpoint["epoch"])
 ---
 
 ## 🏋️ Revision Exercises
+
+> 💡 **Solutions Available**: Stuck on an exercise or want to verify your code? Check out the complete reference solutions in [`solutions.md`](./solutions.md).
 
 ### Level 1: Recall & Conceptual
 1. Why does PyTorch require calling `optimizer.zero_grad()` before `loss.backward()`? What happens if you forget it?

@@ -34,11 +34,24 @@ jobs:
       run: |
         python -m pytest tests/ -v
 
-    - name: Smoke Test Sample Runnable Modules
+    - name: Smoke Test All 19 Runnable Module Scripts
       run: |
         python 01_Python_and_Research_Tooling/tooling_demo.py
         python 02_NumPy_Vectorization_and_Data/numpy_foundations.py
+        python 03_Intuitive_Linear_Algebra/linear_algebra_demo.py
         python 04_Intuitive_Calculus_and_Optimization/optimization_demo.py
         python 05_Intuitive_Probability_and_Information_Theory/probability_info_demo.py
+        python 06_Classical_Machine_Learning/titanic_baseline.py
         python 07_Neural_Networks_and_Autograd_From_Scratch/micrograd_engine.py
+        python 08_PyTorch_Deep_Learning_Core/pytorch_pipeline.py
+        python 09_Deep_Learning_Dynamics_and_Architectures/architectures_dynamics.py
+        python 10_Tokenization_and_Byte_Pair_Encoding/bpe_tokenizer.py
+        python 11_Attention_and_The_Transformer/attention_mechanisms.py
+        python 12_Building_GPT_From_Scratch/nanogpt_model.py
+        python 13_Foundations_of_Reinforcement_Learning/tabular_q_learning.py
+        python 14_Deep_RL_Policy_Gradients_and_PPO/clean_ppo.py
+        python 15_Post_Training_and_Alignment_SFT_and_DPO/dpo_loss.py
+        python 16_RLHF_and_Group_Relative_Policy_Optimization_GRPO/grpo_core.py
+        python 17_Reasoning_Models_and_Test_Time_Compute/reasoning_search_demo.py
+        python 18_Mechanistic_Interpretability_and_AI_Safety/interpretability_sae_demo.py
         python 20_Capstone_GRPO_Loss_Walkthrough/grpo_loss_walkthrough.py

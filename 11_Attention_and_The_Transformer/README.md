@@ -4,6 +4,18 @@
   <img src="../assets/11_transformer_attention.png" alt="11_Attention_and_The_Transformer Diagram" width="85%">
 </p>
 
+<p align="center">
+  <a href="https://colab.research.google.com/github/amirlankalm/ai-research-foundations/blob/main/11_Attention_and_The_Transformer/module_11.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a>
+</p>
+
+> [!NOTE]
+> ⏱️ **Estimated Study Time**: ~3.5 hours reading + ~2.5 hours exercises  
+> 🎯 **What "Done" Looks Like**:
+> - [ ] You can explain Query, Key, and Value roles using the retrieval intuition.
+> - [ ] You can implement scaled dot-product attention with causal masking from raw tensor operations.
+> - [ ] You understand how Rotary Position Embeddings (RoPE) encode relative token distance.
+> - [ ] You solved Level 1 & Level 2 exercises and verified them against [`solutions.md`](solutions.md).
+
 
 Welcome to Module 11 of **AI Research Foundations**. In 2017, the landmark paper *"Attention Is All You Need"* revolutionized artificial intelligence. In this module, we dissect the core mechanism powering every modern foundation model: **Self-Attention**.
 
@@ -193,6 +205,9 @@ With KV Cache:    Generating N tokens costs O(N) compute per step!
 ---
 
 ## 🏋️ Revision Exercises
+
+> [!TIP]
+> **Worked Solutions**: Once you've attempted these exercises, check your custom attention implementation, RoPE verification, and FlashAttention analysis in [`solutions.md`](solutions.md).
 
 ### Level 1: Recall & Conceptual
 1. In plain English, what are the distinct roles of **Query**, **Key**, and **Value** in self-attention?

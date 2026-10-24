@@ -4,6 +4,14 @@
   <img src="../assets/10_bpe_tokenization.png" alt="10_Tokenization_and_Byte_Pair_Encoding Diagram" width="85%">
 </p>
 
+> [!NOTE]
+> ⏱️ **Estimated Study Time**: ~2.5 hours reading + ~2 hours exercises  
+> 🎯 **What "Done" Looks Like**:
+> - [ ] You understand why UTF-8 bytes solve the Out-Of-Vocabulary (OOV) problem permanently.
+> - [ ] You can implement the BPE iterative merge loop tracking pair frequency counts.
+> - [ ] You ran `python3 -m pytest tests/test_core.py -k "bpe" -v` and verified that encoding and decoding are lossless.
+> - [ ] You attempted the Level 1 & Level 2 exercises.
+
 
 Welcome to Module 10 of **AI Research Foundations**. Language models do not see text, words, or letters directly. Before a single neural network layer can touch text, strings must be chopped into numerical IDs through **Tokenization**. In this module, we build a **Byte-Pair Encoding (BPE)** tokenizer from scratch.
 
@@ -168,6 +176,8 @@ Many strange LLM behaviors are not flaws in reasoning—they are direct conseque
 ---
 
 ## 🏋️ Revision Exercises
+
+> 💡 **Solutions Available**: Stuck on an exercise or want to verify your code? Check out the complete reference solutions in [`solutions.md`](./solutions.md).
 
 ### Level 1: Recall & Conceptual
 1. Why does modern NLP use **byte-level** BPE *(starting from 256 raw UTF-8 bytes)* instead of character-level BPE?

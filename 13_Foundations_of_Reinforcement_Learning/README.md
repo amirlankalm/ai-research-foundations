@@ -4,6 +4,14 @@
   <img src="../assets/13_rl_mdp_bellman.png" alt="13_Foundations_of_Reinforcement_Learning Diagram" width="85%">
 </p>
 
+> [!NOTE]
+> ⏱️ **Estimated Study Time**: ~3 hours reading + ~2 hours exercises  
+> 🎯 **What "Done" Looks Like**:
+> - [ ] You can define states, actions, transitions, and the discount factor $\gamma$ in an MDP.
+> - [ ] You understand the Bellman Optimality Equation and why bootstrapping enables tabular Q-learning.
+> - [ ] You ran `python3 13_Foundations_of_Reinforcement_Learning/tabular_q_learning.py` and solved the GridWorld navigation task.
+> - [ ] You attempted the Level 1 & Level 2 exercises.
+
 
 Welcome to Module 13 of **AI Research Foundations**. Up to this point, our models learned from fixed datasets *(supervised learning)*. In **Reinforcement Learning (RL)**, an agent learns by interacting directly with a dynamic environment through **trial, error, and delayed rewards**. RL is the mathematical foundation for game-playing agents, robotics, and frontier post-training *(RLHF and GRPO reasoning models)*.
 
@@ -157,6 +165,8 @@ print("Learned Q-Table:\n", Q_table)
 ---
 
 ## 🏋️ Revision Exercises
+
+> 💡 **Solutions Available**: Stuck on an exercise or want to verify your code? Check out the complete reference solutions in [`solutions.md`](./solutions.md).
 
 ### Level 1: Recall & Conceptual
 1. State the **Markov Property** in plain English. Give one example of a real-world scenario that is strictly Markovian and one that is not.

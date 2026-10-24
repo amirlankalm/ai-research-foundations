@@ -4,6 +4,14 @@
   <img src="../assets/09_activations_and_norms.png" alt="09_Deep_Learning_Dynamics_and_Architectures Diagram" width="85%">
 </p>
 
+> [!NOTE]
+> ⏱️ **Estimated Study Time**: ~3 hours reading + ~2 hours exercises  
+> 🎯 **What "Done" Looks Like**:
+> - [ ] You understand why residual connections ($x + F(x)$) create a gradient superhighway that solves vanishing gradients.
+> - [ ] You can explain why modern LLMs use Pre-LN RMSNorm and SwiGLU instead of Post-LN BatchNorm and standard GeLU.
+> - [ ] You ran `python3 -m pytest tests/test_torch.py -k "rmsnorm or swiglu" -v` and both tests pass.
+> - [ ] You attempted the Level 1 & Level 2 exercises.
+
 
 Welcome to Module 09 of **AI Research Foundations**. In this module, we examine the inner physics of deep neural networks. Why do 50-layer networks fail to train if initialized incorrectly? How do **residual connections**, **LayerNorm**, and modern activations like **SwiGLU** stabilize optimization and enable models with hundreds of layers?
 
@@ -160,6 +168,8 @@ This historical stepping-stone bridges classic convolutional nets and modern aut
 ---
 
 ## 🏋️ Revision Exercises
+
+> 💡 **Solutions Available**: Stuck on an exercise or want to verify your code? Check out the complete reference solutions in [`solutions.md`](./solutions.md).
 
 ### Level 1: Recall & Conceptual
 1. Why does Kaiming initialization use $\frac{2}{D_{\text{in}}}$ rather than $\frac{1}{D_{\text{in}}}$ for ReLU networks?
