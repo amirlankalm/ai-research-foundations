@@ -11,6 +11,8 @@
 > - [ ] You understand how LoRA compresses parameter updates into rank-$r$ matrices ($W + \frac{\alpha}{r} BA$).
 > - [ ] You understand how DPO mathematically bypasses the reward model to optimize preference directly via implicit reward formulation.
 > - [ ] You ran `python3 15_Post_Training_and_Alignment_SFT_and_DPO/dpo_loss.py` and saw DPO loss decrease on winning completions.
+>
+> 🔬 **Scope Note**: Numerical illustration of the loss on synthetic tensors — no neural network model is trained here. Focuses strictly on verifying the loss equations and gradient dynamics.
 
 
 Welcome to Module 15 of **AI Research Foundations**. A raw pre-trained foundation model is essentially an internet document completion simulator. If you prompt it with *"How do I bake bread?"*, it might reply with *"Chapter 2: Yeast and Flour"* instead of an answer! 

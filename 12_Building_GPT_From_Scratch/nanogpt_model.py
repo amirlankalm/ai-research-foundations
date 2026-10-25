@@ -121,7 +121,7 @@ class MiniGPT(nn.Module):
         return idx
 
 
-def run_worked_experiment():
+def run_worked_experiment(steps: int = 150, verbose: bool = True) -> dict:
     """
     Complete, reproducible tiny character-level language modeling experiment:
     - Fixed seed: 42
@@ -135,7 +135,8 @@ def run_worked_experiment():
     if os.path.exists("input.txt"):
         with open("input.txt", "r", encoding="utf-8") as f:
             raw_text = f.read()[:50000] # Use first 50k chars for quick CPU training
-        print("📖 Loaded local corpus 'input.txt'!")
+        if verbose:
+            print("📖 Loaded local corpus 'input.txt'!")
     else:
         raw_text = (
             "To be, or not to be, that is the question: "
@@ -162,12 +163,13 @@ def run_worked_experiment():
 
     # Theoretical random baseline loss = ln(vocab_size)
     baseline_loss = math.log(vocab_size)
-    print("=" * 60)
-    print("🔬 MODULE 12: WORKED TINY LANGUAGE MODEL EXPERIMENT")
-    print("=" * 60)
-    print(f"Dataset Size: {len(data)} characters | Vocabulary: {vocab_size} unique chars")
-    print(f"Train/Val Split: {len(train_data)} train chars / {len(val_data)} val chars")
-    print(f"Theoretical Uniform Baseline Loss: {baseline_loss:.4f} (Perplexity: {vocab_size:.1f})")
+    if verbose:
+        print("=" * 60)
+        print("🔬 MODULE 12: WORKED TINY LANGUAGE MODEL EXPERIMENT")
+        print("=" * 60)
+        print(f"Dataset Size: {len(data)} characters | Vocabulary: {vocab_size} unique chars")
+        print(f"Train/Val Split: {len(train_data)} train chars / {len(val_data)} val chars")
+        print(f"Theoretical Uniform Baseline Loss: {baseline_loss:.4f} (Perplexity: {vocab_size:.1f})")
 
     def get_batch(split: str):
         d = train_data if split == "train" else val_data
@@ -180,31 +182,44 @@ def run_worked_experiment():
     with torch.no_grad():
         x_init, y_init = get_batch("val")
         _, init_val_loss = model(x_init, y_init)
-    print(f"Initial Step 0 Val Loss: {init_val_loss.item():.4f}")
+    if verbose:
+        print(f"Initial Step 0 Val Loss: {init_val_loss.item():.4f}")
 
+    val_loss = init_val_loss
     # Training loop
-    for step in range(1, 151):
+    for step in range(1, steps + 1):
         x_batch, y_batch = get_batch("train")
         _, loss = model(x_batch, y_batch)
         optimizer.zero_grad(set_to_none=True)
         loss.backward()
         optimizer.step()
 
-        if step % 50 == 0:
+        if step % 50 == 0 or step == steps:
             with torch.no_grad():
                 x_val, y_val = get_batch("val")
                 _, val_loss = model(x_val, y_val)
-            print(f"Step {step:3d} | Train Loss: {loss.item():.4f} | Held-out Val Loss: {val_loss.item():.4f}")
+            if verbose:
+                print(f"Step {step:3d} | Train Loss: {loss.item():.4f} | Held-out Val Loss: {val_loss.item():.4f}")
 
     # Final generation
     context = torch.tensor([[stoi["T"], stoi["o"]]], dtype=torch.long)
     generated = model.generate(context, max_new_tokens=40, temperature=0.7)
     sample_text = "".join([itos[i] for i in generated[0].tolist()])
-    print("-" * 60)
-    print("Generated Text (Prompt: 'To'):")
-    print(sample_text)
-    print("-" * 60)
-    print("✅ Module 12 experiment completed successfully!")
+    if verbose:
+        print("-" * 60)
+        print("Generated Text (Prompt: 'To'):")
+        print(sample_text)
+        print("-" * 60)
+        print("✅ Module 12 experiment completed successfully!")
+
+    return {
+        "baseline_loss": baseline_loss,
+        "init_val_loss": init_val_loss.item(),
+        "final_train_loss": loss.item(),
+        "final_val_loss": val_loss.item(),
+        "generated_sample": sample_text,
+        "model": model
+    }
 
 
 if __name__ == "__main__":

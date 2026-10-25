@@ -39,24 +39,48 @@ class SparseAutoencoder(nn.Module):
 
         return reconstructed, latents, total_loss, recon_loss, l1_loss
 
-if __name__ == "__main__":
-    print("=== Training Sparse Autoencoder (SAE) Demo ===")
-    torch.manual_seed(42)
-
-    # Simulate hidden activations from a neural network: 500 samples of dimension 16
+def train_sae_experiment(epochs: int = 200, seed: int = 42, verbose: bool = True) -> dict:
+    """
+    Trains Sparse Autoencoder on activations.
+    Returns metrics dictionary with initial reconstruction loss, final reconstruction loss, and sparsity.
+    """
+    torch.manual_seed(seed)
     activations = torch.randn(500, 16)
     sae = SparseAutoencoder(d_model=16, dict_size=64, l1_coeff=0.01)
     optimizer = torch.optim.Adam(sae.parameters(), lr=1e-3)
 
-    for epoch in range(1, 201):
+    init_recon_loss = None
+    final_recon_loss = None
+    final_sparsity = None
+
+    if verbose:
+        print("=== Training Sparse Autoencoder (SAE) Demo ===")
+
+    for epoch in range(1, epochs + 1):
         _, latents, total_loss, recon_loss, l1_loss = sae(activations)
+        if epoch == 1:
+            init_recon_loss = recon_loss.item()
+
         optimizer.zero_grad()
         total_loss.backward()
         optimizer.step()
 
-        if epoch % 50 == 0:
-            # Calculate sparsity: percentage of latents that are strictly zero
+        if epoch % 50 == 0 or epoch == epochs:
             sparsity = (latents == 0.0).float().mean().item() * 100
-            print(f"Epoch {epoch:3d} | Total: {total_loss.item():.4f} | Recon: {recon_loss.item():.4f} | Sparsity: {sparsity:.1f}% inactive")
+            final_recon_loss = recon_loss.item()
+            final_sparsity = sparsity
+            if verbose:
+                print(f"Epoch {epoch:3d} | Total: {total_loss.item():.4f} | Recon: {recon_loss.item():.4f} | Sparsity: {sparsity:.1f}% inactive")
 
-    print("\n✅ Module 18 SAE verified successfully!")
+    if verbose:
+        print("\n✅ Module 18 SAE verified successfully!")
+
+    return {
+        "init_recon_loss": init_recon_loss,
+        "final_recon_loss": final_recon_loss,
+        "final_sparsity": final_sparsity,
+        "sae": sae
+    }
+
+if __name__ == "__main__":
+    train_sae_experiment(epochs=200, seed=42, verbose=True)

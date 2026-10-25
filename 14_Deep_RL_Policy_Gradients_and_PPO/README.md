@@ -11,6 +11,8 @@
 > - [ ] You understand how the Critic state baseline reduces Monte Carlo return variance.
 > - [ ] You understand why PPO's clipped surrogate objective prevents destructive policy updates.
 > - [ ] You solved Level 1 & Level 2 exercises and verified them against [`solutions.md`](solutions.md).
+>
+> 🔬 **Scope Note**: Numerical illustration of the loss on synthetic tensors — no neural network model is trained here. Focuses strictly on verifying the loss equations and gradient dynamics.
 
 
 Welcome to Module 14 of **AI Research Foundations**. While value-based methods like Q-Learning work well for small action spaces, language models generate tokens from a massive vocabulary of 50,000+ choices at every position. To train models with large action spaces and continuous trajectories, we turn to **Policy Gradient methods**, culminating in **Proximal Policy Optimization (PPO)**.

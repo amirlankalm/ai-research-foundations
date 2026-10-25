@@ -32,7 +32,7 @@
 | **17 Reasoning Models** | Yes | `reasoning_search_demo.py` | **YES** (`python3 17_.../reasoning_search_demo.py`, 0.03s)<br>`Pass@1: 39.8% -> Best-of-31 Majority Voting: 82.1%` | Yes (3/2/1) | **YES** (`solutions.md`) | Via repo scripts | Yes (`17_reasoning_models.png`) | Verified. Test-time search & majority voting simulation. |
 | **18 Interpretability & SAE** | Yes | `interpretability_sae_demo.py` | **YES** (`python3 18_.../interpretability_sae_demo.py`, 1.00s CPU)<br>`200 Epochs SAE ... Loss: 0.0381 ... Sparsity: 98.4% inactive` | Yes (3/2/1) | **YES** (`solutions.md`) | Via repo scripts | Yes (`18_interpretability_sae.png`) | Verified. Sparse Autoencoder with L1 penalty on feature activations. |
 | **19 Paper Reading** | Yes | `paper_critique_template.md` | **N/A** (Structured Template) | Yes (3/3/1) | **YES** (`solutions.md`) | Via repo template | Yes (`19_three_pass_reading.png`) | Verified. S. Keshav Three-Pass method & 5 Cs critique guide. |
-| **20 Capstone: GRPO** | Yes | `grpo_loss_walkthrough.py` | **YES** (`python3 20_.../grpo_loss_walkthrough.py`, 0.98s CPU)<br>`4 Candidates ... Rewards [1.1, 1.1, 0.1, 0.0] ... GRPO Step 1..5 Loss: 0.00 -> -0.189` | Yes (3/3/2) | **YES** (`solutions.md`) | **YES** (`module_20.ipynb`) | Yes (`20_capstone_grpo_paper.png`) | **HONEST WALKTHROUGH:** Standalone loss & group advantage walkthrough on CPU. |
+| **20 Capstone: GRPO** | Yes | `grpo_loss_walkthrough.py` | **YES** (`python3 20_.../grpo_loss_walkthrough.py`, 0.98s CPU)<br>`4 Candidates ... Robust: [1.1, 1.1, 0.0, 0.0] vs Naive: [1.1, 1.1, 0.1, 0.0] ... GRPO Step 1..5 Loss: 0.00 -> -0.189` | Yes (3/4/2) | **YES** (`solutions.md`) | **YES** (`module_20.ipynb`) | Yes (`20_capstone_grpo_paper.png`) | **HONEST WALKTHROUGH:** Standalone loss & group advantage walkthrough on CPU. Gated verifier prevents reward hacking. |
 
 ---
 
@@ -71,10 +71,15 @@ $$\mathcal{J}_{\text{GRPO}}(\theta) = \mathbb{E} \left[ \frac{1}{G} \sum_{i=1}^G
 
 ## 4. Test Suite and CI Verification Status
 
-- **Automated Test Suite:** `tests/test_core.py` covering core mechanics across all modules (20 unit tests).
-- **Execution Command:** `python3 -m pytest tests/ -v` (100% passing).
+- **Automated Test Suite:** 25 unit tests total:
+  - `tests/test_core.py`: 14 tests covering Modules 01–07, 10, 13, 17 with zero PyTorch dependencies.
+  - `tests/test_torch.py`: 11 tests covering Modules 08, 09, 11, 12, 14, 15, 16, 18, 20.
+- **Execution Command:** `python3 -m pytest tests/ -v` (100% passing in ~1.5s).
 - **Continuous Integration:** `.github/workflows/ci.yml` executes:
   - Test matrix across Python 3.11 and Python 3.12.
-  - Syntax and flake8 linting.
-  - `pytest tests/ -v`.
+  - Full pytest suite (25 assertions including behavioral assertions on loss convergence, policy navigation, search scaling, and SAE sparsity).
   - Full CPU smoke-test of all 19 executable Python scripts across modules 01 through 18 and 20.
+- **Dependency Architecture:** Single source of truth:
+  - `requirements-core.txt`: Minimal numerical & classical ML track (NumPy, SciPy, Pandas, Scikit-learn, Pytest).
+  - `requirements-torch.txt`: Deep learning stack (includes `-r requirements-core.txt` plus PyTorch, torchvision, tiktoken, tqdm).
+  - `requirements.txt`: Clean alias pointing to `requirements-torch.txt`.

@@ -25,6 +25,8 @@ mod05 = import_from_path("mod05", "05_Intuitive_Probability_and_Information_Theo
 mod06 = import_from_path("mod06", "06_Classical_Machine_Learning/titanic_baseline.py")
 mod07 = import_from_path("mod07", "07_Neural_Networks_and_Autograd_From_Scratch/micrograd_engine.py")
 mod10 = import_from_path("mod10", "10_Tokenization_and_Byte_Pair_Encoding/bpe_tokenizer.py")
+mod13 = import_from_path("mod13", "13_Foundations_of_Reinforcement_Learning/tabular_q_learning.py")
+mod17 = import_from_path("mod17", "17_Reasoning_Models_and_Test_Time_Compute/reasoning_search_demo.py")
 
 # -------------------------------------------------------------
 # Module 01: Tooling & Batching
@@ -146,3 +148,25 @@ def test_module_10_bpe_roundtrip():
     encoded = tok.encode(text)
     decoded = tok.decode(encoded)
     assert decoded == text
+
+# -------------------------------------------------------------
+# Module 13: Tabular Q-Learning Convergence & Navigation
+# -------------------------------------------------------------
+def test_module_13_q_learning_reaches_goal():
+    res = mod13.train_q_learning(episodes=500, seed=42, verbose=False)
+    assert res["reaches_goal"] is True
+    # Verify agent begins at (0, 0) and reaches goal (3, 3) avoiding pit (1, 1)
+    assert res["trajectory"][0] == (0, 0)
+    assert res["trajectory"][-1] == (3, 3)
+    assert (1, 1) not in res["trajectory"]
+
+# -------------------------------------------------------------
+# Module 17: Reasoning Search Scaling & Majority Voting
+# -------------------------------------------------------------
+def test_module_17_search_scaling():
+    res = mod17.run_search_simulation(trials=500, seed=42, verbose=False)
+    # Test-time compute: majority vote accuracy monotonically improves over pass@1
+    assert res["pass@1"] > 0.30
+    assert res["best_of_15"] > res["pass@1"]
+    assert res["best_of_31"] > res["best_of_15"]
+    assert res["best_of_31"] > 0.85

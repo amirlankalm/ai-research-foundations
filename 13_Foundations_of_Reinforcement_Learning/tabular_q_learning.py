@@ -39,9 +39,12 @@ class GridWorld:
         else:
             return state_idx, -0.1, False  # Slight step cost to encourage fast arrival
 
-if __name__ == "__main__":
-    print("=== Training Tabular Q-Learning on 4x4 GridWorld ===")
-    np.random.seed(42)
+def train_q_learning(episodes: int = 500, seed: int = 42, verbose: bool = True) -> dict:
+    """
+    Trains tabular Q-learning on 4x4 GridWorld.
+    Returns dictionary with learned Q table, trajectory, and reaches_goal boolean.
+    """
+    np.random.seed(seed)
     env = GridWorld(size=4)
     n_states = 16
     n_actions = 4
@@ -49,7 +52,7 @@ if __name__ == "__main__":
 
     lr, gamma, epsilon = 0.1, 0.95, 0.2
 
-    for episode in range(500):
+    for episode in range(episodes):
         s = env.reset()
         done = False
         while not done:
@@ -63,20 +66,46 @@ if __name__ == "__main__":
             Q[s, a] += lr * (td_target - Q[s, a])
             s = next_s
 
-    # Print learned best policy arrows
-    actions_arrows = ["↑", "↓", "←", "→"]
-    print("\nLearned Policy Grid:")
-    for r in range(4):
-        row_str = ""
-        for c in range(4):
-            idx = r * 4 + c
-            if (r, c) == env.goal:
-                row_str += "  🚩  "
-            elif (r, c) == env.pit:
-                row_str += "  💀  "
-            else:
-                best_a = np.argmax(Q[idx])
-                row_str += f"  {actions_arrows[best_a]}  "
-        print(row_str)
+    # Trace greedy path from start (0,0)
+    env.reset()
+    s = env._state_idx()
+    trajectory = [env.agent_pos]
+    reaches_goal = False
+    for _ in range(20):
+        a = np.argmax(Q[s])
+        s, r, done = env.step(a)
+        trajectory.append(env.agent_pos)
+        if env.agent_pos == env.goal:
+            reaches_goal = True
+            break
+        if env.agent_pos == env.pit or done:
+            break
 
+    if verbose:
+        actions_arrows = ["↑", "↓", "←", "→"]
+        print("\nLearned Policy Grid:")
+        for r in range(4):
+            row_str = ""
+            for c in range(4):
+                idx = r * 4 + c
+                if (r, c) == env.goal:
+                    row_str += "  🚩  "
+                elif (r, c) == env.pit:
+                    row_str += "  💀  "
+                else:
+                    best_a = np.argmax(Q[idx])
+                    row_str += f"  {actions_arrows[best_a]}  "
+            print(row_str)
+
+    return {
+        "Q": Q,
+        "reaches_goal": reaches_goal,
+        "trajectory": trajectory
+    }
+
+if __name__ == "__main__":
+    print("=== Training Tabular Q-Learning on 4x4 GridWorld ===")
+    res = train_q_learning(episodes=500, verbose=True)
+    print("\nGreedy Trajectory from (0,0):", res["trajectory"])
+    print(f"Policy Reaches Goal Successfully: {res['reaches_goal']}")
     print("\n✅ Module 13 Q-learning environment verified!")

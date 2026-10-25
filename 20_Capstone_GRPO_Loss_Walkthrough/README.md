@@ -20,6 +20,8 @@
 > - [ ] You understand why group-relative advantage estimation eliminates the parametric Critic model required by PPO.
 > - [ ] You ran `python3 20_Capstone_GRPO_Loss_Walkthrough/grpo_loss_walkthrough.py` and saw group advantage normalization and loss convergence on CPU.
 > - [ ] You drafted a walkthrough report using the template in Section 5 documenting experimental setup, advantages, and ablations.
+>
+> 🔬 **Scope Note**: Numerical illustration of the loss on synthetic tensors — no 7B neural network model is trained here. Focuses strictly on verifying the loss equations, group advantage standardization, and verifier mechanics on CPU.
 
 Welcome to the **Capstone Walkthrough** of **AI Research Foundations**!
 
@@ -89,10 +91,18 @@ Let's dissect the core equations from Section 3 of the paper into plain English:
 For each question prompt $q$, the active policy $\pi_\theta$ samples a group of $G$ independent candidate answers:
 $$\mathcal{O} = \{o_1, o_2, \dots, o_G\}$$
 
-### 2. Rule-Based Reward Verification
+### 2. Rule-Based Reward Verification & The Reward-Hacking Hazard
 Each output $o_i$ is evaluated by an automated verifier against the ground-truth integer answer:
 $$r_i = \begin{cases} 1.0 & \text{if final answer matches ground truth} \\ 0.0 & \text{otherwise} \end{cases}$$
-*(Optionally, a small format reward $+0.1$ is awarded if the output cleanly encapsulates its reasoning inside `<think>...</think>` tags!)*
+
+> [!WARNING]
+> **Reward Design Is Where Training Pipelines Live or Die**:
+> In reinforcement learning, a reward that pays for something other than the true skill teaches the model to exploit the metric rather than learn the task.
+> 
+> If you implement a naive verifier that unconditionally hands out $+0.1$ for `<think>` tags:
+> - Candidate 3 (`<think> 15 - 4 = 11. 11 - 3 = 7. </think> <answer>7</answer>`) contains wrong arithmetic, but receives **0.1 reward**, outscoring an honest wrong answer (`She has 10 apples left.`, reward 0.0)!
+> - The model will learn to emit empty think tags and append lucky numbers rather than reasoning.
+> - **The Fix**: Gate the format bonus strictly on correctness: award $+0.1$ **only if** `is_correct == True`, and require the answer inside `<answer>...</answer>` tags with no arbitrary regex fallback.
 
 ### 3. Group-Relative Advantage Normalization
 Instead of estimating state values with a value network, GRPO calculates the advantage of candidate $o_i$ by standardizing rewards across the group:
@@ -244,6 +254,7 @@ Once your experiment runs, document your findings using the template below. You 
    - Verify that policy loss decreases as the model shifts probability mass toward correct reasoning chains.
 2. Modify the verifier in `grpo_loss_walkthrough.py` to support negative numbers and decimals.
 3. Test an ablation: set $\beta = 0.0$ (disabling the KL divergence penalty). What happens to the policy ratios $r_t$ over 50 iterations?
+4. **Reward-Hacking Exercise**: In `grpo_loss_walkthrough.py`, Candidate 3 is wrong (`15 - 4 = 11. 11 - 3 = 7`) but under a naive un-gated verifier it scores `0.1` and outscores an honest wrong answer. Find three distinct ways to game this naive verifier. Now fix it by gating the format bonus strictly on correctness (`+0.1` ONLY if `is_correct`) and requiring answers inside `<answer>` tags with zero regex fallback.
 
 ### Level 3: Research Deep Dive
 1. **The Scaling of Group Size $G$**:

@@ -21,12 +21,25 @@ def import_from_path(module_name: str, file_path: str):
     spec.loader.exec_module(mod)
     return mod
 
+mod08 = import_from_path("mod08", "08_PyTorch_Deep_Learning_Core/pytorch_pipeline.py")
 mod09 = import_from_path("mod09", "09_Deep_Learning_Dynamics_and_Architectures/architectures_dynamics.py")
 mod11 = import_from_path("mod11", "11_Attention_and_The_Transformer/attention_mechanisms.py")
+mod12 = import_from_path("mod12", "12_Building_GPT_From_Scratch/nanogpt_model.py")
 mod14 = import_from_path("mod14", "14_Deep_RL_Policy_Gradients_and_PPO/clean_ppo.py")
 mod15 = import_from_path("mod15", "15_Post_Training_and_Alignment_SFT_and_DPO/dpo_loss.py")
 mod16 = import_from_path("mod16", "16_RLHF_and_Group_Relative_Policy_Optimization_GRPO/grpo_core.py")
+mod18 = import_from_path("mod18", "18_Mechanistic_Interpretability_and_AI_Safety/interpretability_sae_demo.py")
 mod20 = import_from_path("mod20", "20_Capstone_GRPO_Loss_Walkthrough/grpo_loss_walkthrough.py")
+
+# -------------------------------------------------------------
+# Module 08: PyTorch Pipeline Training Loop & Validation
+# -------------------------------------------------------------
+def test_module_08_pipeline():
+    res = mod08.run_training_pipeline(epochs=5, seed=42, device_name="cpu")
+    # Training loss must decrease across epochs
+    assert res["final_train_loss"] < res["initial_train_loss"]
+    # Model learns synthetic clusters well above 3-class random chance (0.33)
+    assert res["val_acc"] > 0.60
 
 # -------------------------------------------------------------
 # Module 09: Dynamics, RMSNorm & SwiGLU
@@ -60,6 +73,16 @@ def test_module_11_attention():
     assert torch.isclose(weights.sum(dim=-1), torch.ones(B, H, T)).all()
 
 # -------------------------------------------------------------
+# Module 12: Building GPT (nanoGPT) Training & Loss Convergence
+# -------------------------------------------------------------
+def test_module_12_nanogpt():
+    res = mod12.run_worked_experiment(steps=150, verbose=False)
+    # Success criterion from README: final loss beats random uniform baseline and drops < 2.80
+    assert res["final_train_loss"] < res["baseline_loss"]
+    assert res["final_train_loss"] < 2.80
+    assert len(res["generated_sample"]) > 0
+
+# -------------------------------------------------------------
 # Module 14: PPO Clipped Surrogate
 # -------------------------------------------------------------
 def test_module_14_ppo_loss():
@@ -90,13 +113,26 @@ def test_module_16_grpo_advantages():
     assert torch.isclose(advs.mean(), torch.tensor(0.0), atol=1e-6)
 
 # -------------------------------------------------------------
+# Module 18: Sparse Autoencoder (SAE) Reconstruction & Sparsity
+# -------------------------------------------------------------
+def test_module_18_sae():
+    res = mod18.train_sae_experiment(epochs=100, seed=42, verbose=False)
+    # Reconstruction loss must decrease during training
+    assert res["final_recon_loss"] < res["init_recon_loss"]
+    # L1 sparsity penalty ensures significant latent inactivity
+    assert res["final_sparsity"] > 40.0
+
+# -------------------------------------------------------------
 # Module 20: Capstone GRPO Math Verifier & Loss Gradient Backprop
 # -------------------------------------------------------------
 def test_module_20_verifier():
     correct = "<think> 2 + 2 = 4 </think> <answer>4</answer>"
     wrong = "<think> 2 + 2 = 5 </think> <answer>5</answer>"
-    assert mod20.verify_math_candidate(correct, "4") == 1.1
-    assert mod20.verify_math_candidate(wrong, "4") == 0.1
+    # Robust gated verifier (default): wrong candidate receives 0.0 despite think tags (prevents reward hacking)
+    assert mod20.verify_math_candidate(correct, "4", strict_format=True) == 1.1
+    assert mod20.verify_math_candidate(wrong, "4", strict_format=True) == 0.0
+    # Naive un-gated verifier: illustrates reward hacking anti-pattern (+0.1 for tags even when wrong)
+    assert mod20.verify_math_candidate(wrong, "4", strict_format=False) == 0.1
 
 def test_module_20_grpo_loss_backward():
     """Verifies that GRPO loss produces finite, correctly shaped gradients that reinforce high advantage."""

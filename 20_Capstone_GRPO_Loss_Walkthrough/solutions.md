@@ -78,6 +78,30 @@ When setting $\beta = 0.0$ in `grpo_loss_walkthrough.py`:
 - For high-reward responses, the probabilities increase unchecked until logits saturate; for zero-reward responses, logits are driven towards negative infinity.
 - In long sequences, the absence of $\beta$ causes catastrophic entropy collapse: the policy becomes rigid and overconfident, losing grammatical diversity and ability to explore alternative reasoning paths.
 
+### 4. Reward-Hacking Case Study: Three Ways to Game the Naive Verifier & The Fix
+
+#### Three Ways to Game the Naive Verifier:
+1. **The Empty-Think Exploit**: The model outputs `<think></think>` containing zero actual reasoning or random gibberish on every prompt. Because the naive verifier gives `+0.1` whenever `<think>` is in the string, the model guarantees a baseline reward of 0.1 without solving anything. In difficult math problems where real accuracy is low, the RL gradient will focus entirely on optimizing for tag emission.
+2. **The Stray-Integer Fallback Hack**: If the model is uncertain, it dumps a chain ending in a list of integers (e.g. `"1 2 3 4 5 6 7 8"`). The `re.findall(r"-?\d+", text)[-1]` fallback blindly grabs the last integer (`8`), scoring an unearned 1.0 reward on any problem whose answer happens to be 8.
+3. **Format Over Substance (Negative Selection)**: Candidate 3 has wrong math (`15 - 4 = 11. 11 - 3 = 7. <answer>7</answer>`) but scored `0.1`, outscoring an honest wrong answer (`She has 10 apples left.`, score `0.0`). The optimizer actively learns that hallucinations wrapped in formatting tags are superior to honest attempts.
+
+#### The Robust Fix:
+- **Strict Tag Enforcement**: Delete the regex number fallback completely. Only text explicitly enclosed in `<answer>...</answer>` is recognized as an answer.
+- **Gated Format Bonus**: Award the `+0.1` format bonus **only if** `is_correct == True`:
+  ```python
+  def verify_math_candidate_robust(text: str, ground_truth: str) -> float:
+      match = re.search(r"<answer>(.*?)</answer>", text, re.DOTALL)
+      if not match:
+          return 0.0
+      extracted = match.group(1).strip()
+      is_correct = (extracted == ground_truth.strip())
+      if not is_correct:
+          return 0.0
+      # Format bonus strictly gated on correctness
+      has_think = ("<think>" in text and "</think>" in text)
+      return 1.1 if has_think else 1.0
+  ```
+
 ---
 
 ## Level 3: Research Deep Dive

@@ -26,15 +26,20 @@ class ResearchMLP(nn.Module):
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         return self.net(x)
 
-if __name__ == "__main__":
-    print("=== PyTorch Training Loop Sanity Check ===")
-    torch.manual_seed(42)
-    device = torch.device("mps" if torch.backends.mps.is_available() else ("cuda" if torch.cuda.is_available() else "cpu"))
-    print("Running on device:", device)
+def run_training_pipeline(epochs: int = 5, seed: int = 42, device_name: str = None) -> dict:
+    """
+    Executes canonical PyTorch training & validation loop.
+    Returns metrics dictionary with initial loss, final loss, and validation accuracy.
+    """
+    torch.manual_seed(seed)
+    if device_name is None:
+        device = torch.device("mps" if torch.backends.mps.is_available() else ("cuda" if torch.cuda.is_available() else "cpu"))
+    else:
+        device = torch.device(device_name)
 
-    # 1. Create synthetic classification data
+    # 1. Create synthetic classification data (non-trivial separable clusters)
     X = torch.randn(500, 10)
-    y = torch.randint(0, 3, (500,))
+    y = ((X[:, 0] > 0).long() + (X[:, 1] > 0).long())  # 3 classes: 0, 1, 2
     train_ds = TensorDataset(X[:400], y[:400])
     val_ds = TensorDataset(X[400:], y[400:])
 
@@ -43,11 +48,14 @@ if __name__ == "__main__":
 
     # 2. Initialize Model, Optimizer, Loss
     model = ResearchMLP(in_features=10, hidden_dim=32, num_classes=3).to(device)
-    optimizer = optim.AdamW(model.parameters(), lr=1e-3, weight_decay=1e-2)
+    optimizer = optim.AdamW(model.parameters(), lr=5e-3, weight_decay=1e-2)
     criterion = nn.CrossEntropyLoss()
 
-    # 3. Quick 5-epoch training loop
-    for epoch in range(1, 6):
+    initial_loss = None
+    final_loss = None
+
+    # 3. Training loop
+    for epoch in range(1, epochs + 1):
         model.train()
         epoch_loss = 0.0
         for bx, by in train_loader:
@@ -58,6 +66,11 @@ if __name__ == "__main__":
             loss.backward()
             optimizer.step()
             epoch_loss += loss.item()
+
+        avg_loss = epoch_loss / len(train_loader)
+        if epoch == 1:
+            initial_loss = avg_loss
+        final_loss = avg_loss
 
         # Validation
         model.eval()
@@ -70,6 +83,16 @@ if __name__ == "__main__":
                 total += by.size(0)
 
         val_acc = correct / total
-        print(f"Epoch {epoch}/5 | Train Loss: {epoch_loss/len(train_loader):.4f} | Val Accuracy: {val_acc*100:.1f}%")
+        print(f"Epoch {epoch}/{epochs} | Train Loss: {avg_loss:.4f} | Val Accuracy: {val_acc*100:.1f}%")
 
+    return {
+        "initial_train_loss": initial_loss,
+        "final_train_loss": final_loss,
+        "val_acc": val_acc,
+        "model": model
+    }
+
+if __name__ == "__main__":
+    print("=== PyTorch Training Loop Sanity Check ===")
+    res = run_training_pipeline(epochs=5)
     print("\n✅ Module 08 PyTorch pipeline successfully verified!")

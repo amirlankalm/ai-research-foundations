@@ -35,6 +35,7 @@ def compute_dpo_loss(
 
 if __name__ == "__main__":
     print("=== Direct Preference Optimization (DPO) Demo ===")
+    print("🔬 Scope Note: Numerical illustration of the loss on synthetic tensors — no model is trained here.\n")
     torch.manual_seed(42)
 
     # Simulated batch of 2 preference pairs

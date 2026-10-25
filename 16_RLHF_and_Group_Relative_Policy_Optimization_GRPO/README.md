@@ -11,6 +11,8 @@
 > - [ ] You can implement the GRPO group advantage normalization formula $\hat{A}_i = \frac{r_i - \text{mean}(r)}{\text{std}(r) + \epsilon}$.
 > - [ ] You understand why rule-based verifiers eliminate reward hacking on reasoning tasks.
 > - [ ] You solved Level 1 & Level 2 exercises and verified them against [`solutions.md`](solutions.md).
+>
+> 🔬 **Scope Note**: Numerical illustration of the loss on synthetic tensors — no neural network model is trained here. Focuses strictly on verifying the loss equations and gradient dynamics.
 
 
 Welcome to Module 16 of **AI Research Foundations**. In this module, we examine the reinforcement learning methods that align foundation models and unlock reasoning: the traditional **RLHF** pipeline and DeepSeek's breakthrough algorithm: **Group Relative Policy Optimization (GRPO)**.

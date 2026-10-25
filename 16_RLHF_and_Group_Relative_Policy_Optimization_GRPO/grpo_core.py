@@ -51,6 +51,7 @@ def grpo_step_loss(
 
 if __name__ == "__main__":
     print("=== Group Relative Policy Optimization (GRPO) Demo ===")
+    print("🔬 Scope Note: Numerical illustration of the loss on synthetic tensors — no model is trained here.\n")
     torch.manual_seed(42)
 
     # Scenario: For 1 prompt, we sample G = 4 candidate reasoning paths

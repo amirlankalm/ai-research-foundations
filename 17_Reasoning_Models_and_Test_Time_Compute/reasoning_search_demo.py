@@ -32,19 +32,31 @@ def best_of_n_majority_vote(n_samples: int = 16) -> int:
     winner, count = votes.most_common(1)[0]
     return winner
 
-if __name__ == "__main__":
-    print("=== Test-Time Compute Scaling Simulation ===")
-    random.seed(42)
-
-    # 1. Single sample accuracy (pass@1 without test-time search)
-    single_trials = [simulate_reasoning_attempt()[0] == 42 for _ in range(1000)]
+def run_search_simulation(trials: int = 500, seed: int = 42, verbose: bool = True) -> dict:
+    """
+    Simulates scaling test-time compute via Best-of-N Majority Voting.
+    Returns dictionary with accuracies for pass@1 and best-of-N consensus.
+    """
+    random.seed(seed)
+    single_trials = [simulate_reasoning_attempt()[0] == 42 for _ in range(trials)]
     acc_single = sum(single_trials) / len(single_trials)
-    print(f"Pass@1 Accuracy (Zero test-time compute): {acc_single * 100:.1f}%")
 
-    # 2. Scaling test-time candidates (Best-of-N majority voting)
+    results = {"pass@1": acc_single}
+    if verbose:
+        print("=== Test-Time Compute Scaling Simulation ===")
+        print(f"Pass@1 Accuracy (Zero test-time compute): {acc_single * 100:.1f}%")
+
     for N in [3, 7, 15, 31]:
-        search_trials = [best_of_n_majority_vote(n_samples=N) == 42 for _ in range(1000)]
+        search_trials = [best_of_n_majority_vote(n_samples=N) == 42 for _ in range(trials)]
         acc_search = sum(search_trials) / len(search_trials)
-        print(f"Pass@Best-of-{N:2d} Majority Voting Accuracy: {acc_search * 100:.1f}%")
+        results[f"best_of_{N}"] = acc_search
+        if verbose:
+            print(f"Pass@Best-of-{N:2d} Majority Voting Accuracy: {acc_search * 100:.1f}%")
 
-    print("\n✅ Module 17 reasoning search simulation complete!")
+    if verbose:
+        print("\n✅ Module 17 reasoning search simulation complete!")
+
+    return results
+
+if __name__ == "__main__":
+    run_search_simulation(trials=1000, seed=42, verbose=True)

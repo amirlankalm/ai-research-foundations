@@ -29,6 +29,27 @@
 
 ---
 
+## 🎯 What This Repo Is (and Is Not)
+
+> [!IMPORTANT]
+> **Honest Positioning & Portfolio Context**:
+> - **What this repo IS**: A self-built, rigorous 20-module foundation curriculum taking a learner from basic Python to modern post-training internals (Micrograd autograd, Pre-LN Transformers, PPO clipped loss, DPO preference margins, and DeepSeekMath GRPO group normalization). It serves as tangible evidence of deep fluency in machine learning fundamentals, clean implementation habits, and clear technical communication. Every core source and intellectual lineage (Andrej Karpathy's Zero to Hero, CleanRL, DeepSeekMath) is credited explicitly.
+> - **What this repo IS NOT**: It is **not original research**. Every module here is a guided re-implementation of established, well-known foundational machinery where the ground-truth equations and behaviors are already proven. Original exploratory research and novel benchmarking live in dedicated research projects.
+
+### 📝 What I Learned Building This (Reflections Across the 9 Stages)
+
+1. **Stage 1: Tooling & Data (Mod 01–02)**: *What broke:* NumPy array strides and broadcasting dimensions when batching variable-length sequences. *Surprise:* Vectorized operations in NumPy outperform naive nested Python loops by over 50x purely due to contiguous C memory layouts and SIMD registers.
+2. **Stage 2: Intuitive Math (Mod 03–05)**: *What broke:* Rosenbrock gradient descent oscillating in sharp valleys without momentum. *Surprise:* How much geometric intuition demystifies deep learning: self-attention scaling $\frac{1}{\sqrt{d_k}}$ is just variance normalization of dot products under the central limit theorem.
+3. **Stage 3: Classical ML (Mod 06)**: *What broke:* Logistic regression exploding on unnormalized features. *Surprise:* Overfitting is not just a parameter count problem—data leakage across train/test splits before imputation is the #1 silent killer in production.
+4. **Stage 4: Deep Learning Core (Mod 07–09)**: *What broke:* Autograd gradient overwrite bug when a node fed into multiple branches (needed `+=` instead of `=`). *Surprise:* Pre-LN vs Post-LN: simply moving LayerNorm inside the residual block creates an unimpeded identity highway that completely eliminates the need for delicate warmup heuristics.
+5. **Stage 5: Transformers & NanoGPT (Mod 10–12)**: *What broke:* Off-by-one errors in causal masking and target shifting ($x_{t+1}$ vs $x_t$). *Surprise:* Byte-level BPE is genuinely universal: 256 initial bytes completely eliminates Out-Of-Vocabulary `<unk>` tokens forever, even for emojis.
+6. **Stage 6: Reinforcement Learning (Mod 13–14)**: *What broke:* Non-stationarity in Q-learning cliff traps. *Surprise:* The log-derivative trick in policy gradients $\nabla \log \pi_\theta(a|s)$ turns an intractable expectation over environment dynamics into a simple weighted cross-entropy loss.
+7. **Stage 7: Alignment & Reasoning (Mod 15–17)**: *What broke:* DPO loss length exploitation (longer generations accumulating larger reward margins). *Surprise:* Bradley-Terry preference modeling can be solved analytically—we don't need a critic network or an online RL loop to align an LLM with human preferences.
+8. **Stage 8: Interpretability & Safety (Mod 18)**: *What broke:* SAE dictionary collapse with too small an L1 penalty. *Surprise:* Induction heads ($[A][B] \dots [A] \to [B]$) explain in-context few-shot learning across just two attention layers without any parameter updates.
+9. **Stage 9 & Capstone: Paper Walkthrough (Mod 19–20)**: *What broke:* Naive format rewards paying for `<think>` tags without verifying the answer (reward hacking!). *Surprise:* GRPO eliminates the massive Critic network of PPO simply by standardizing rewards across a group of sampled responses for the same prompt, saving ~45% GPU VRAM.
+
+---
+
 ## 📖 Welcome to AI Research Foundations
 
 > [!NOTE]
@@ -50,7 +71,7 @@ Inspired by the structured, hands-on, community-driven spirit of **[30 Days of P
 
 ## 🗺️ Curriculum Overview
 
-Follow the modules sequentially. Each folder contains a detailed, beautifully illustrated guide (`README.md`) complete with theory, term definitions, runnable Python code, interactive **Google Colab** notebooks, graded **revision exercises** at three difficulty levels, and complete worked reference **solutions** (`solutions.md`) for every module.
+Follow the modules sequentially. Each folder contains a detailed, beautifully illustrated guide (`README.md`) complete with theory, term definitions, runnable Python code in every module, interactive **Google Colab** notebooks for 7 core modules (01, 02, 03, 07, 11, 12, 20), graded **revision exercises** at three difficulty levels, and complete worked reference **solutions** (`solutions.md`) across all 20 modules.
 
 | # | Module Topic | Core Focus | Stage & Tools | Link |
 |---|---|---|---|---|
@@ -101,10 +122,10 @@ pip install -r requirements-core.txt
 pip install -r requirements-torch.txt
 
 # 4. Verify your installation by running the test suite
-# If you chose Option A (Core track, 12 passing tests without PyTorch):
+# If you chose Option A (Core track, 14 passing tests without PyTorch):
 python3 -m pytest tests/test_core.py -v
 
-# If you chose Option B (Full Deep Learning track, 20 passing tests):
+# If you chose Option B (Full Deep Learning track, 25 passing tests):
 python3 -m pytest tests/ -v
 ```
 

@@ -45,6 +45,7 @@ class ActorCritic(nn.Module):
 
 if __name__ == "__main__":
     print("=== PPO Clipped Surrogate Sanity Check ===")
+    print("🔬 Scope Note: Numerical illustration of the loss on synthetic tensors — no model is trained here.\n")
     torch.manual_seed(42)
 
     # 1. Simulate batch of 4 steps

@@ -2,6 +2,8 @@
 AI Research Foundations - Module 20: GRPO Loss Math & Group Normalization Walkthrough
 Paper Reference: DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models (arXiv:2402.03300)
 Run with: python grpo_loss_walkthrough.py
+
+🔬 SCOPE NOTE: Numerical illustration of the loss on synthetic tensors — no 7B model is trained here.
 """
 
 import re
@@ -12,22 +14,48 @@ import torch.nn.functional as F
 # -------------------------------------------------------------
 # 1. Rule-Based Mathematical Verifier (GSM8K Style)
 # -------------------------------------------------------------
-def extract_answer(text: str) -> str:
-    """Extracts final mathematical answer from reasoning text."""
-    match = re.search(r"<answer>(.*?)</answer>", text)
+def extract_answer(text: str, strict: bool = True) -> str:
+    """
+    Extracts final mathematical answer from reasoning text.
+    If strict=True: requires exact <answer>...</answer> tags with no fallback.
+    If strict=False: falls back to last integer in text (gameable anti-pattern).
+    """
+    match = re.search(r"<answer>(.*?)</answer>", text, re.DOTALL)
     if match:
         return match.group(1).strip()
+    if strict:
+        return ""
+    # Naive fallback: last integer in text (gameable!)
     numbers = re.findall(r"-?\d+", text)
     return numbers[-1] if numbers else ""
 
-def verify_math_candidate(candidate_text: str, ground_truth: str) -> float:
-    """Awards 1.0 for exact answer match, +0.1 format bonus for <think> tags."""
-    extracted = extract_answer(candidate_text)
+def verify_math_candidate(candidate_text: str, ground_truth: str, strict_format: bool = True) -> float:
+    """
+    Evaluates reasoning candidate.
+    
+    If strict_format is True (Robust Verifier):
+      - Extracts answer strictly inside <answer> tags.
+      - Gates format bonus on correctness (+0.1 ONLY if is_correct).
+      - Returns 1.1 for correct + format, 1.0 for correct without format, 0.0 for incorrect.
+      
+    If strict_format is False (Naive Gameable Verifier):
+      - Allows regex fallback to any trailing integer.
+      - Unconditionally awards +0.1 for <think> tags even if answer is wrong.
+      - Demonstrates reward hacking (Candidate 3 gets 0.1 despite wrong arithmetic).
+    """
+    extracted = extract_answer(candidate_text, strict=strict_format)
     is_correct = (extracted == ground_truth.strip())
-    reward = 1.0 if is_correct else 0.0
-    if "<think>" in candidate_text and "</think>" in candidate_text:
-        reward += 0.1
-    return reward
+    
+    if strict_format:
+        if not is_correct:
+            return 0.0
+        has_think = ("<think>" in candidate_text and "</think>" in candidate_text)
+        return 1.1 if has_think else 1.0
+    else:
+        reward = 1.0 if is_correct else 0.0
+        if "<think>" in candidate_text and "</think>" in candidate_text:
+            reward += 0.1
+        return reward
 
 # -------------------------------------------------------------
 # 2. Group Advantage Normalizer
@@ -85,6 +113,7 @@ def grpo_loss(
 if __name__ == "__main__":
     print("=" * 70)
     print("🚀 DEEPSEEKMATH GRPO LOSS & VERIFIER WALKTHROUGH (arXiv:2402.03300)")
+    print("🔬 Scope Note: Numerical illustration of the loss on synthetic tensors — no 7B model is trained here.")
     print("=" * 70)
     torch.manual_seed(42)
 
@@ -102,16 +131,22 @@ if __name__ == "__main__":
         "She has 10 apples left."                                                  # Wrong + No tags
     ]
 
-    print("\n--- Evaluating Candidate Completions ---")
+    print("\n--- Evaluating Candidate Completions (Robust vs. Naive Verifiers) ---")
+    print("💡 Educational Note on Reward Hacking:")
+    print("   Under a naive un-gated verifier, Candidate 3 (wrong arithmetic) receives 0.1 purely for <think> tags,")
+    print("   outscoring an honest wrong answer! A model trained on that naive verifier learns to hack tags instead of math.")
+    print("   Our robust verifier gates the format bonus on correctness (+0.1 ONLY if is_correct) and requires <answer> tags.\n")
+
     rewards_list = []
     for i, c in enumerate(candidates):
-        r = verify_math_candidate(c, ground_truth)
-        rewards_list.append(r)
-        print(f"Candidate {i+1} [Reward: {r:.1f}]: {c}")
+        r_robust = verify_math_candidate(c, ground_truth, strict_format=True)
+        r_naive = verify_math_candidate(c, ground_truth, strict_format=False)
+        rewards_list.append(r_robust)
+        print(f"Candidate {i+1} [Robust: {r_robust:.1f} | Naive: {r_naive:.1f}]: {c}")
 
     rewards = torch.tensor(rewards_list)
     advantages = compute_group_advantages(rewards)
-    print("\n--- Group-Relative Advantages (A_i) ---")
+    print("\n--- Group-Relative Advantages (A_i from Robust Verifier) ---")
     for i, adv in enumerate(advantages.tolist()):
         print(f"Candidate {i+1} Advantage: {adv:+.4f}")
 
